@@ -1,0 +1,73 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<!-- {if $cat_style} -->
+<link href="{$cat_style}" rel="stylesheet" type="text/css" />
+<!-- {/if} -->
+{* 包含脚本文件 *}
+{insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
+{insert_scripts files='common.js,global.js,compare.js'}
+
+  <div class="w100">
+    <div class="w1000">
+      <div class="w1000 url_here">
+      <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <div class="w1000 text">
+
+        <div class="w210 goods_cat">
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">产品分类</p>
+            <ul class="cat_child">
+              <li><img src="images/goods_28.png" alt="" /><a href="{$script_name}.php?category={$category}&type=&page={$pager.page}">所有产品</a></li>
+              <li><img src="images/goods_28.png" alt="" /><a href="{$script_name}.php?category={$category}&type=hot&page={$pager.page}">热销产品</a></li>
+              <li><img src="images/goods_28.png" alt="" /><a href="{$script_name}.php?category={$category}&type=new&page={$pager.page}">新品推荐</a></li>
+            </ul>
+          </div>
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">积分商城</p>
+            <ul class="cat_child">
+              <li><img src="images/goods_28.png" alt="" /><a href="">积分产品</a></li>
+            </ul>
+          </div>
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">热门标签</p>
+            <div class="hot_tag">
+              <!-- {if $tags} -->
+              <!--{foreach from=$tags item=tag}-->
+              <a href="search.php?keywords={$tag.tag_words}"><div class="tag_row">{$tag.tag_words|escape:html}</div></a>
+              <!--{/foreach}-->
+              <!--{/if}-->
+            </div>
+          </div>
+        </div>
+
+        <div class="w760 goods_list">
+          <!--{foreach from=$goods_list item=goods}-->
+          <!--{if $goods}-->
+          <div class="goods_one">
+            <a href="{$goods.url}"><img src="{$goods.goods_thumb}" width="221px" height="168px" alt=""></a>
+            <div class="add_cart_div"><a href="javascript:addToCart({$goods.goods_id})">添加到购物车</a></div>
+            <p class="cat_goods_title"><a href="{$goods.url}">{$goods.goods_name}</a></p>
+            <div class="cat_goods_desc">
+              {$goods.goods_brief|truncate:35}
+            </div>
+          </div>
+          <!--{/if}-->
+          <!--{/foreach}-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+
+    $('.goods_one').hover(function () {
+      $(this).children('.add_cart_div').show();
+      $(this).children('.cat_goods_desc').css('border-bottom','5px solid #f87d01');
+    },function () {
+      $(this).children('.add_cart_div').hide();
+      $(this).children('.cat_goods_desc').css('border-bottom','5px solid #000');
+    });
+  
+  </script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

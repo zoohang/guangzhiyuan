@@ -1,0 +1,184 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="themes/my/css/swiper.min.css">
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+  <!--首页主广告轮播区域start-->
+  <div class="w1600 h418">
+    <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!--{foreach from=$flash item=lunbo}-->
+          <div class="swiper-slide" style="text-align:center;"><a href="{$lunbo.url}" target="_blank"><img src="{$lunbo.src}" alt=""></a></div>
+          <!--{/foreach}-->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+    <script type="text/javascript">
+      var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          paginationClickable: true,
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: 0,
+          autoplayDisableOnInteraction: false
+        });
+  </script>
+  <!--首页主广告轮播区域end-->
+  
+  <!--首页新闻start-->
+  <div class="w1000 news_index">
+    <div class="news_bar">
+      <div class="news_cat_title">
+        <div class="news_cat_title_font"><img src="images/index_29.png" alt="">{$dongtai[0].cat_name|truncate:20}</div>
+        <div class="news_more"><a href="{$dongtai[0].cat_url}">更多<span style="font-size: 12px;">&gt;&gt;</span></a></div>
+      </div>
+      <div class="news_cat_content">
+        <div class="news_first">
+          <a href="{$dongtai[0].url}"><img src="{$dongtai[0].article_img}" width="316px" height="170px" alt=""></a>
+          <p class="news_time">{$dongtai[0].add_time}</p>
+          <p class="news_title"><a href="{$dongtai[0].url}">{$dongtai[0].title}</a></p>
+          <p class="news_content">{$dongtai[0].description}</p>
+        </div>
+        <div style="display:none;">{$dongtai|shift}</div>
+        <!--{foreach from=$dongtai item=article}-->
+        <div class="news_other">
+          <p class="news_time">{$article.add_time}</p>
+          <p class="news_title"><img src="images/index_70.png" alt=""><a href="{$article.url}">{$article.title}</a></p>
+        </div>
+        <!--{/foreach}-->
+      </div>
+    </div>
+
+    <div class="news_bar">
+      <div class="news_cat_title">
+        <div class="news_cat_title_font"><img src="images/index_29.png" alt="">课程培训</div>
+        <div class="news_more"><a href="category.php?id=16">更多<span style="font-size: 12px;">&gt;&gt;</span></a></div>
+      </div>
+      <div class="news_cat_content">
+        
+        <!--{foreach name=kechengpeixun from=$kechengpeixun item=goods}-->
+        <!--{if $smarty.foreach.kechengpeixun.index eq 0}-->
+        <div class="news_first">
+          <a href="{$goods.url}"><img src="{$goods.goods_img}" width="316px" height="170px" alt=""></a>
+          <p class="news_time">{$goods.add_time}</p>
+          <p class="news_title"><a href="{$goods.url}">{$goods.name}</a></p>
+          <p class="news_content">{$goods.goods_brief|truncate:40}</p>
+        </div>
+        <!--{else}-->
+        <div class="news_other">
+          <p class="news_time">{$goods.add_time}</p>
+          <p class="news_title"><img src="images/index_70.png" alt=""><a href="{$goods.url}">{$goods.name}</a></p>
+        </div>
+        <!--{/if}-->
+        <!--{/foreach}-->
+      </div>
+    </div>
+
+    <div class="news_bar">
+      <div class="news_cat_title">
+        <div class="news_cat_title_font"><img src="images/index_29.png" alt="">{$guangan[0].cat_name|truncate:20}</div>
+        <div class="news_more"><a href="{$guangan[0].cat_url}">更多<span style="font-size: 12px;">&gt;&gt;</span></a></div>
+      </div>
+      <div class="news_cat_content">
+        <div class="news_first">
+          <a href="{$guangan[0].url}"><img src="{$guangan[0].article_img}" width="316px" height="170px" alt=""></a>
+          <p class="news_time">{$guangan[0].add_time}</p>
+          <p class="news_title"><a href="{$guangan[0].url}">{$guangan[0].title}</a></p>
+          <p class="news_content">{$guangan[0].description}</p>
+        </div>
+        <div style="display:none;">{$guangan|shift}</div>
+        <!--{foreach from=$guangan item=article}-->
+        <div class="news_other">
+          <p class="news_time">{$article.add_time}</p>
+          <p class="news_title"><img src="images/index_70.png" alt=""><a href="{$article.url}">{$article.title}</a></p>
+        </div>
+        <!--{/foreach}-->
+      </div>
+    </div>
+  </div>
+  <!--首页新闻end-->
+
+  <!--首页产品start-->
+  <div class="w1000 chanpin_index">
+    <div class="chanpin_desc">
+      <div class="news_cat_title">
+        <div class="news_cat_title_font"><img src="images/index_29.png" alt="">能量产品</div>
+        <div class="news_more"><a href="category.php?id=17">更多<span style="font-size: 12px;">&gt;&gt;</span></a></div>
+      </div>
+      <div class="chanpin_three">
+
+        <!--{foreach name=nengliangchanpin from=$nengliangchanpin item=goods}-->
+        <!--{if $smarty.foreach.nengliangchanpin.index lt 3}-->
+        <div class="chanpin_detail">
+          <a href="{$goods.url}"><img src="{$goods.goods_thumb_img}" width="155px" height="118px" alt=""></a>
+          <p class="chanpin_title"><a href="{$goods.url}">{$goods.name}</a></p>
+        </div>
+        <!--{/if}-->
+        <!--{/foreach}-->
+      </div>
+    </div>
+    <div class="gean_desc">
+      <div class="news_cat_title">
+        <div class="news_cat_title_font"><img src="images/index_29.png" alt="">{$gean[0].cat_name}</div>
+        <div class="news_more"><a href="{$gean[0].cat_url}">更多<span style="font-size: 12px;">&gt;&gt;</span></a></div>
+      </div>
+      <div class="gean_four">
+        <!--{foreach from=$gean item=article}-->
+        <div class="gean_row">
+          <div class="gean_info">
+            <a href="{$article.url}"><img src="{$article.article_img}" width="56px" height="50px" alt=""></a>
+            <p class="news_title"><a href="{$article.url}">{$article.title|truncate:12}</a></p>
+            <p class="news_content">{$article.description|truncate:30}</p>
+          </div>
+        </div>
+        <!--{/foreach}-->
+      </div>
+    </div>
+  </div>
+  <!--首页产品end-->
+
+  <!--首页推荐start-->
+  <div class="w100 tuijian_index">
+    <div class="w1000">
+      <div class="tuijian_part">
+        <a href=""><img src="images/index_53.png" alt=""></a>
+        <p class="tuijian_title"><a href="">滋养你的灵魂</a></p>
+        <div class="gray_bar"></div>
+        <p class="tuijian_content">了解真实的自我 "超越心灵"和成为一个更高的灵魂</p>
+      </div>
+      <div class="tuijian_part">
+        <a href=""><img src="images/index_56.png" alt=""></a>
+        <p class="tuijian_title"><a href="">滋养你的灵魂</a></p>
+        <div class="gray_bar"></div>
+        <p class="tuijian_content">了解真实的自我 "超越心灵"和成为一个更高的灵魂</p>
+      </div>
+      <div class="tuijian_part">
+        <a href=""><img src="images/index_59.png" alt=""></a>
+        <p class="tuijian_title"><a href="">滋养你的灵魂</a></p>
+        <div class="gray_bar"></div>
+        <p class="tuijian_content">了解真实的自我 "超越心灵"和成为一个更高的灵魂</p>
+      </div>
+      <div class="tuijian_part">
+        <a href=""><img src="images/index_62.png" alt=""></a>
+        <p class="tuijian_title"><a href="">滋养你的灵魂</a></p>
+        <div class="gray_bar"></div>
+        <p class="tuijian_content">了解真实的自我 "超越心灵"和成为一个更高的灵魂</p>
+      </div>
+      <div class="tuijian_part">
+        <a href=""><img src="images/index_65.png" alt=""></a>
+        <p class="tuijian_title"><a href="">滋养你的灵魂</a></p>
+        <div class="gray_bar"></div>
+        <p class="tuijian_content">了解真实的自我 "超越心灵"和成为一个更高的灵魂</p>
+      </div>
+    </div>
+  </div>
+  <!--首页推荐end-->
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

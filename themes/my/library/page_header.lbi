@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="{$keywords}" />
+  <meta name="Description" content="{$description}" />
+  <title>{$page_title}</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="icon" href="animated_favicon.gif" type="image/gif" />
+  <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="themes/my/css/all.css">
+
+</head>
+<body>
+
+  <!--顶部导航和登陆start-->
+  <div class="top">
+    <div class="top_bar">
+      <div class="w1000 header">
+        <div class="logo">
+          <a href="./"><img src="images/index_05.png" alt=""></a>
+        </div>
+        <div class="top_right">
+          <div class="login">
+            <div class="login_cart">
+              <a href="flow.php"><img src="images/index_02.png" alt=""></a>
+            </div>
+            <div class="login_box">
+              {insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
+              <script type="text/javascript" src="themes/my/js/all.js"></script>
+              {insert_scripts files='transport.js,utils.js'}
+              <font id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font>
+            </div>
+          </div>
+          <div class="nav">
+            <ul>
+              <li><a href="../index.php"{if $navigator_list.config.index eq 1} class="cur"{/if}>{$lang.home}</li>
+              <!-- {foreach name=nav_top_list from=$navigator_list.middle item=nav} -->
+              <li><a href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if} {if $nav.active eq 1} class="cur"{/if}>{$nav.name}</a></li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--顶部导航和登陆end-->

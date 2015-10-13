@@ -1,0 +1,44 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--公共底部start-->
+  <div class="footer-bg">
+    <div class="online_zixun">
+      <a href=""><img src="images/index_26.png" alt=""></a>
+      <a href=""><img src="images/index_42.png" style="margin-top: -2px" alt=""></a>
+    </div>
+    <div class="w1000">
+      <div class="lianxi">
+        <ul>
+          <!--{if $service_phone}-->
+          <li>电话：{$service_phone}</li>
+          <!--{/if}-->
+
+          <!--{if $shop_address}-->
+          <li>地址：{$shop_address}</li>
+          <!--{/if}-->
+
+          <!--{if $skype}-->
+          <!--{foreach from=$skype item=skype}-->
+          <li>邮编：{$skype}</li>
+          <!--{/foreach}-->
+          <!--{/if}-->
+
+          <!--{if $qq}-->
+          <!--{foreach from=$qq item=qq}-->
+          <li>QQ：{$qq}</li>
+          <!--{/foreach}-->
+          <!--{/if}-->
+        </ul>
+      </div>
+      <div class="copyright">
+        {$copyright}
+      </div>
+      <div class="help_index">
+        <a href="">帮助中心</a> |
+        <a href="">支付方式</a> |
+        <a href="">关于我们</a>
+      </div>
+    </div>
+  </div>
+  <!--公共底部end-->
+</body>
+</html>
