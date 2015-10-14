@@ -332,6 +332,10 @@ elseif ($action == 'act_login')
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
     $back_act = isset($_POST['back_act']) ? trim($_POST['back_act']) : '';
+    $agreement = isset($_POST['agreement']) ? trim($_POST['agreement']) : '';
+    if(empty($agreement)){
+        show_message('请先同意服务条款', $_LANG['relogin_lnk'], 'user.php', 'error');
+    }
 
 
     $captcha = intval($_CFG['captcha']);

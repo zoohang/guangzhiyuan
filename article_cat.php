@@ -121,6 +121,7 @@ if (!$smarty->is_cached('article_cat.dwt', $cache_id))
         $goon_keywords = urlencode($_REQUEST['keywords']);
     }
     $smarty->assign('artciles_list',    get_cat_articles($cat_id, $page, $size ,$keywords));
+    //var_dump(get_cat_articles($cat_id, $page, $size ,$keywords));
     $smarty->assign('cat_id',    $cat_id);
     /* 分页 */
     assign_pager('article_cat', $cat_id, $count, $size, '', '', $page, $goon_keywords);

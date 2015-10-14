@@ -26,7 +26,7 @@
           <div class="cat_block">
             <p class="cat_title"><img src="images/icon.png" alt="">积分商城</p>
             <ul class="cat_child">
-              <li><img src="images/goods_28.png" alt="" /><a href="">积分产品</a></li>
+              <li><img src="images/goods_28.png" alt="" /><a href="exchange.php">积分产品</a></li>
             </ul>
           </div>
           <div class="cat_block">
@@ -54,6 +54,7 @@
           </div>
           <!--{/if}-->
           <!--{/foreach}-->
+          <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
         </div>
       </div>
     </div>

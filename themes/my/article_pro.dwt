@@ -1,71 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="{$keywords}" />
-<meta name="Description" content="{$description}" />
-<!-- TemplateBeginEditable name="doctitle" -->
-<title>{$page_title}</title>
-<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
-{* 包含脚本文件 *}
-{insert_scripts files='common.js'}
-</head>
-<body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<!--当前位置 start-->
-<div class="block box">
- <div id="ur_here">
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
- </div>
-</div>
-<!--当前位置 end-->
-<div class="blank"></div>
-<div class="block">
-  <div class="box">
-   <div class="box_1">
-    <h3><span>{$article.title|escape:html}</span></h3>
-    <div class="boxCenterList">
-      <!-- {if $article.content } -->
-     {$article.content}
-     <!-- {/if} -->
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<!-- {if $cat_style} -->
+<link href="{$cat_style}" rel="stylesheet" type="text/css" />
+<!-- {/if} -->
+{insert_scripts files='common.js,global.js,compare.js'}
+
+  <div class="w100">
+    <div class="w1000">
+      <div class="w1000 url_here">
+      <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <div class="w1000 text">
+
+        <div class="w1000 goods_list">
+          <!--{if $article.article_id neq 4}-->
+          <p class="article_desc_title" style="text-align:center;">{$article.title|escape:html}</p>
+          <!--{/if}-->
+          <div class="article_desc_info">
+          <!-- {if $article.content } -->
+            {$article.content}
+          <!-- {/if} -->
+          <!--{if $article.article_id neq 4}-->
+          {if $article.open_type eq 2 or $article.open_type eq 1}<br />
+          <div><a href="{$article.file_url}" target="_blank">{$lang.relative_file}</a></div>
+          {/if}
+          </div>
+          {if $next_article}
+            <p class="article_prev_next article_prev">上一篇：<a href="{$next_article.url}">{$next_article.title}</a></p>
+          {else}
+            <p class="article_prev_next article_prev">上一篇：没有了</p>
+          {/if}
+          {if $prev_article}
+            <p class="article_prev_next article_next">下一篇：<a href="{$prev_article.url}">{$prev_article.title}</a></p>
+          {else}
+            <p class="article_prev_next article_next">下一篇：没有了</p>
+          {/if}
+          <!--{/if}-->
+        </div>
+        
+      </div>
     </div>
-   </div>
   </div>
-  <div class="blank5"></div>
-</div>
-<div class="blank5"></div>
-<!--帮助-->
-<div class="block">
-  <div class="box">
-   <div class="helpTitBg clearfix">
-    <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
-   </div>
-  </div>  
-</div>
-<div class="blank"></div>
-<!--帮助-->
-<!--友情链接 start-->
-<!--{if $img_links  or $txt_links }-->
-<div id="bottomNav" class="box">
- <div class="box_1">
-  <div class="links clearfix">
-    <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
-    <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
-    <!--结束图片类型的友情链接{/foreach}-->
-    <!-- {if $txt_links} -->
-    <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
-    [<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>] 
-    <!--结束文字类型的友情链接{/foreach}-->
-    <!-- {/if} -->
-  </div>
- </div>
-</div>
-<!--{/if}-->
-<!--友情链接 end-->
-<div class="blank"></div>
+
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
-</body>
-</html>

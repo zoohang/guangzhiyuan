@@ -1,91 +1,77 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="{$keywords}" />
-<meta name="Description" content="{$description}" />
-<!-- TemplateBeginEditable name="doctitle" -->
-<title>{$page_title}</title>
-<!-- TemplateEndEditable -->
-<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<!-- {if $cat_style} -->
+<link href="{$cat_style}" rel="stylesheet" type="text/css" />
+<!-- {/if} -->
 {* 包含脚本文件 *}
 {insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
 {insert_scripts files='common.js,global.js,compare.js'}
-</head>
-<body>
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<!--当前位置 start-->
-<div class="block box">
- <div id="ur_here">
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
- </div>
-</div>
-<!--当前位置 end-->
-<div class="blank"></div>
-<div class="block clearfix">
-  <!--left start-->
-  <div class="AreaL">
-    <!-- TemplateBeginEditable name="左边区域" -->
-    <!-- #BeginLibraryItem "/library/cart.lbi" --><!-- #EndLibraryItem -->
-    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
-    <!-- #BeginLibraryItem "/library/filter_attr.lbi" --><!-- #EndLibraryItem -->
-    <!-- #BeginLibraryItem "/library/price_grade.lbi" --><!-- #EndLibraryItem -->
-    <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->
-    <!-- TemplateEndEditable -->
 
-    <!-- TemplateBeginEditable name="左边广告区域（宽200px）" -->
-    <!-- TemplateEndEditable -->
-    <!--AD end-->
-  </div>
-  <!--left end-->
+  <div class="w100">
+    <div class="w1000">
+      <div class="w1000 url_here">
+      <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <div class="w1000 text">
 
-  <!--right start-->
-  <div class="AreaR">
-    <!-- TemplateBeginEditable name="右边区域" -->
-    <!-- #BeginLibraryItem "/library/exchange_hot.lbi" --><!-- #EndLibraryItem -->
-    <!-- #BeginLibraryItem "/library/exchange_list.lbi" --><!-- #EndLibraryItem -->
-    <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
-    <!-- TemplateEndEditable -->
-  </div>
-  <!--right end-->
-</div>
+        <div class="w210 goods_cat">
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">产品分类</p>
+            <ul class="cat_child">
+              <li><img src="images/goods_28.png" alt="" /><a href="{$script_name}.php?category={$category}&type=&page={$pager.page}">所有产品</a></li>
+              <li><img src="images/goods_28.png" alt="" /><a href="{$script_name}.php?category={$category}&type=hot&page={$pager.page}">热销产品</a></li>
+              <li><img src="images/goods_28.png" alt="" /><a href="{$script_name}.php?category={$category}&type=new&page={$pager.page}">新品推荐</a></li>
+            </ul>
+          </div>
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">积分商城</p>
+            <ul class="cat_child">
+              <li><img src="images/goods_28.png" alt="" /><a href="">积分产品</a></li>
+            </ul>
+          </div>
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">热门标签</p>
+            <div class="hot_tag">
+              <!-- {if $tags} -->
+              <!--{foreach from=$tags item=tag}-->
+              <a href="search.php?keywords={$tag.tag_words}"><div class="tag_row">{$tag.tag_words|escape:html}</div></a>
+              <!--{/foreach}-->
+              <!--{/if}-->
+            </div>
+          </div>
+        </div>
 
-<div class="blank5"></div>
-
-<!--帮助-->
-<div class="block">
-  <div class="box">
-    <div class="helpTitBg clearfix">
-      <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
+        <div class="w760 goods_list">
+          <!--{foreach from=$goods_list item=goods}-->
+          <!--{if $goods}-->
+          <div class="goods_jifen_one">
+            <a href="{$goods.url}"><img src="{$goods.goods_thumb}" width="179px" height="136px" alt=""></a>
+            <div class="cat_goods_jifen">
+              <p class="jifen_title"><a href="{$goods.url}">{$goods.name}</a></p>
+              <p class="jifen_desc">{$goods.goods_brief|truncate:150}</p>
+              <p class="jifen_desc">需要：<span class="jifen_price">{$goods.exchange_integral}</span>积分</p>
+              <p class="jifen_duihuan"><a href="">立即兑换&gt;&gt;</a></p>
+            </div>
+          </div>
+          <!--{/if}-->
+          <!--{/foreach}-->
+          <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="blank"></div>
-<!--帮助-->
+  <script type="text/javascript">
 
-<!--友情链接 start-->
-<!--{if $img_links  or $txt_links }-->
-<div id="bottomNav" class="box">
-  <div class="box_1">
-    <div class="links clearfix">
-      <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
-        <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
-      <!--结束图片类型的友情链接{/foreach}-->
-      <!-- {if $txt_links} -->
-        <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
-        [<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>]
-        <!--结束文字类型的友情链接{/foreach}-->
-      <!-- {/if} -->
-    </div>
-  </div>
-</div>
-<!--{/if}-->
-<!--友情链接 end-->
 
-<div class="blank"></div>
+    $('.goods_list div:first-child').css('padding-top','0');
+    
+    $('.goods_jifen_one').hover(function () {
+      $(this).css('background-color','#f7f7f7');
+      $(this).find('.jifen_duihuan a').css('color','#f87d01');
+    }, function () {
+      $(this).css('background-color','#fff');
+      $(this).find('.jifen_duihuan a').css('color','#333');
+    });
+  
+  </script>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
-</body>
-</html>

@@ -1,0 +1,45 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<!-- {if $cat_style} -->
+<link href="{$cat_style}" rel="stylesheet" type="text/css" />
+<!-- {/if} -->
+{* 包含脚本文件 *}
+{insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
+{insert_scripts files='common.js,global.js,compare.js'}
+
+    <div class="w100">
+    <div class="w1000">
+      <div class="w1000 url_here">
+         <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <div class="w1000 text">
+          <div class="date_title">
+            <span class="date_th">日期</span><span class="title_th">标题&主题</span><span class="title_th" style="margin-left:70%;">浏览</span>
+          </div>
+          <!--{foreach from=$goods_list item=goods}-->
+          <!--{if $goods}-->
+          <div class="service_obj_row">
+            <div class="date_time">
+              <p class="date_time_day">{$goods.add_time_day}</p>
+              <p class="date_time_date">{$goods.add_time}</p>
+            </div>
+            <div class="service_info" style="width:660px">
+              <p class="service_info_title"><a href="{$goods.url}">{$goods.name|truncate:50}</a></p>
+              <p class="service_info_desc">
+                {$goods.goods_brief|truncate:220}
+              </p>
+            </div>
+            <div class="service_read_num">
+              {$goods.click_count}
+            </div>
+          </div>
+          <!--{/if}-->
+          <!--{/foreach}-->
+          <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+  
+  </script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

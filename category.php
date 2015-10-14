@@ -393,15 +393,18 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
             $goodslist[] = array();
         }
     }
-    $smarty->assign('goods_list',       $goodslist);
+    $smarty->assign('goods_list',       $goodslist);//var_dump($goodslist);
     $smarty->assign('category',         $cat_id);
     $smarty->assign('script_name', 'category');
 
     assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
     assign_dynamic('category'); // 动态内容
 }
-
-$smarty->display('category.dwt', $cache_id);
+if($cat_id == '16'){
+    $smarty->display('category_kecheng.dwt', $cache_id);
+}else{
+    $smarty->display('category.dwt', $cache_id);
+}
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION
@@ -465,7 +468,7 @@ function category_get_goods($children, $type, $brand, $min, $max, $ext, $size, $
     }
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.click_count,g.add_time, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
@@ -522,6 +525,9 @@ function category_get_goods($children, $type, $brand, $min, $max, $ext, $size, $
         }
         $arr[$row['goods_id']]['name']             = $row['goods_name'];
         $arr[$row['goods_id']]['goods_brief']      = $row['goods_brief'];
+        $arr[$row['goods_id']]['click_count']      = $row['click_count'];
+        $arr[$row['goods_id']]['add_time']         = date('Y-m',$row['add_time']);
+        $arr[$row['goods_id']]['add_time_day']     = date('d',$row['add_time']);
         $arr[$row['goods_id']]['goods_style_name'] = add_style($row['goods_name'],$row['goods_name_style']);
         $arr[$row['goods_id']]['market_price']     = price_format($row['market_price']);
         $arr[$row['goods_id']]['shop_price']       = price_format($row['shop_price']);

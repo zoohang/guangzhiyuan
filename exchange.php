@@ -116,7 +116,8 @@ if ($_REQUEST['act'] == 'list')
             }
         }
         $smarty->assign('goods_list',       $goodslist);
-        $smarty->assign('category',         $cat_id);
+        $smarty->assign('script_name', 'category');
+        $smarty->assign('category',         '17');
         $smarty->assign('integral_max',     $integral_max);
         $smarty->assign('integral_min',     $integral_min);
 

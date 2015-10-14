@@ -82,6 +82,7 @@ if (!$smarty->is_cached('article.dwt', $cache_id))
     $smarty->assign('keywords',     htmlspecialchars($article['keywords']));
     $smarty->assign('description', htmlspecialchars($article['description']));
 
+
     $catlist = array();
     foreach(get_article_parent_cats($article['cat_id']) as $k=>$v)
     {

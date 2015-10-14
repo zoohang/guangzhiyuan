@@ -358,8 +358,8 @@ color: #f97d01;
 	/* position: relative; */
 }
 .yanzhengma img{
-	position: relative;
-	top: 7px;
+    height: 28px;
+    width: 100px;
 }
 .yanzhengma span{
 	font-size: 13px;
@@ -530,7 +530,7 @@ label[for=checkboxid2] a{
 .cat_goods_jifen{
 	float: left;
 	margin-left: 20px;
-	
+	width: 540px;
 }
 .jifen_title{
 	font-size: 20px;
@@ -542,6 +542,7 @@ label[for=checkboxid2] a{
 	font-size: 14px;
 	padding: 10px 0;
 	color: #666;
+	height: 25px;
 }
 .jifen_price{
 	color: #f87d01;
@@ -597,7 +598,7 @@ label[for=checkboxid2] a{
 .date_time_day{
 		font-size: 35px;
     color: #f87d01;
-    margin: 10px 0;
+    margin: 22px 0;
     font-family: 微软雅黑;
 }
 .service_info{
@@ -670,6 +671,7 @@ label[for=checkboxid2] a{
 .page_row{
 	margin: 20px 0;
 	overflow: hidden;
+	width: 760px;
 }
 .cat_child .cat_goods_tuijian{
 	padding: 0;
@@ -802,7 +804,7 @@ label[for=checkboxid2] a{
 }
 .contact_text{
 	padding: 30px 0;
-	border-bottom: 5px solid #ccc;
+	/* border-bottom: 5px solid #ccc; */
 	margin-bottom: 40px;
 }
 .contact_left{
@@ -864,4 +866,9 @@ label[for=checkboxid2] a{
 	font-size: 17px;
 	margin-top: 10px;
 	border:0;
+}
+.reg_notice{
+		color: #f00;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
