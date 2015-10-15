@@ -124,7 +124,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 
 
         $res['result'] = $GLOBALS['smarty']->fetch('library/bought_notes.lbi');
-
+        //var_dump($res);
         $GLOBALS['smarty']->caching = $need_cache;
         $GLOBALS['smarty']->force_compile = $need_compile;
     }
@@ -187,7 +187,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
             }
         }
 
-        $smarty->assign('goods',              $goods);
+        $smarty->assign('goods',              $goods);//var_dump($goods);
         $smarty->assign('goods_id',           $goods['goods_id']);
         $smarty->assign('promote_end_time',   $goods['gmt_end_time']);
         $smarty->assign('categories',         get_categories_tree($goods['cat_id']));  // 分类树
@@ -238,7 +238,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('pictures',            get_goods_gallery($goods_id));                    // 商品相册
         $smarty->assign('bought_goods',        get_also_bought($goods_id));                      // 购买了该商品的用户还购买了哪些商品
         $smarty->assign('goods_rank',          get_goods_rank($goods_id));                       // 商品的销售排名
-
+        $smarty->assign('best_goods',      get_category_recommend_goods('best','17'));    // 推荐商品
         //获取tag
         $tag_array = get_tags($goods_id);
         $smarty->assign('tags',                $tag_array);                                       // 商品的标记

@@ -122,7 +122,7 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('promotion_info',  get_promotion_info()); // 增加一个动态显示所有促销信息的标签栏
 
     $smarty->assign('invoice_list',    index_get_invoice_query());  // 发货查询
-    $smarty->assign('dongtai',    index_get_new_articles(4));   // 最新动态
+    $smarty->assign('dongtai',    index_get_new_articles(10));   // 最新动态
     //var_dump(index_get_new_articles(4));
     $smarty->assign('guangan',    index_get_new_articles(11));   // 光爱频道
     $smarty->assign('gean',    index_get_new_articles(12));   // 个案分享

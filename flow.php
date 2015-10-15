@@ -1804,8 +1804,8 @@ elseif ($_REQUEST['step'] == 'update_cart')
     {
         flow_update_cart($_POST['goods_number']);
     }
-
-    show_message($_LANG['update_cart_notice'], $_LANG['back_to_cart'], 'flow.php');
+    ecs_header("Location: flow.php");
+    //show_message($_LANG['update_cart_notice'], $_LANG['back_to_cart'], 'flow.php');
     exit;
 }
 
@@ -2092,6 +2092,7 @@ else
     /* 取得商品列表，计算合计 */
     $cart_goods = get_cart_goods();
     $smarty->assign('goods_list', $cart_goods['goods_list']);
+    $smarty->assign('cart_title', '我的购物车');
     $smarty->assign('total', $cart_goods['total']);
 
     //购物车的描述的格式化

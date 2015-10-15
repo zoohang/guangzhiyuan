@@ -72,6 +72,7 @@ if ($action == 'act_add_message')
     $message = array(
         'user_id'     => $user_id,
         'user_name'   => $user_name,
+        'tel'         => isset($_POST['tel']) ? trim($_POST['tel']) : '',
         'user_email'  => isset($_POST['user_email']) ? htmlspecialchars(trim($_POST['user_email']))     : '',
         'msg_type'    => isset($_POST['msg_type']) ? intval($_POST['msg_type'])     : 0,
         'msg_title'   => isset($_POST['msg_title']) ? trim($_POST['msg_title'])     : '',

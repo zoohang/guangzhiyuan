@@ -1,32 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="Generator" content="ECSHOP v2.7.3" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="<?php echo $this->_var['keywords']; ?>" />
-<meta name="Description" content="<?php echo $this->_var['description']; ?>" />
-
-<title><?php echo $this->_var['page_title']; ?></title>
-
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link href="<?php echo $this->_var['ecs_css_path']; ?>" rel="stylesheet" type="text/css" />
-
-<?php echo $this->smarty_insert_scripts(array('files'=>'common.js,shopping_flow.js')); ?>
-</head>
-<body>
 <?php echo $this->fetch('library/page_header.lbi'); ?>
 
-<div class="block box">
- <div id="ur_here">
-  <?php echo $this->fetch('library/ur_here.lbi'); ?>
- </div>
-</div>
+<?php echo $this->smarty_insert_scripts(array('files'=>'common.js,shopping_flow.js')); ?>
 
-<div class="blank"></div>
-<div class="block">
+<div class="w100">
+
+
+
+<div class="w1000" style="min-height:400px;">
   <?php if ($this->_var['step'] == "cart"): ?>
   
+  <style type="text/css">
+    .cart_table{font-size: 14px;}
+  </style>
   
   <?php echo $this->smarty_insert_scripts(array('files'=>'showdiv.js')); ?>
   <script type="text/javascript">
@@ -36,36 +21,39 @@
     var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item']; ?>";
   <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
   </script>
-  <div class="flowBox">
-    <h6><span><?php echo $this->_var['lang']['goods_list']; ?></span></h6>
+    <div class="w1000 cart_route">
+      <span class="cart_title">我的购物车</span>
+      <a href="flow.php" class="link_on">我的购物车</a> &gt; 
+      <a href="flow.php?step=consignee">填写核对订单信息</a> &gt; 
+      <a href="flow.php?step=checkout">选择支付方式</a> &gt; 
+      <a href="flow.php?step=done">成功提交订单</a>
+      <?php if ($this->_var['cart_title']): ?>
+      <span class="goon_shopping"><a href="./">继续购物&gt;</a></span>
+      <?php endif; ?>
+   </div>
+  <div class="w1000 text">
         <form id="formCart" name="formCart" method="post" action="flow.php">
-           <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
-            <tr>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['goods_name']; ?></th>
-      <?php if ($this->_var['show_goods_attribute'] == 1): ?>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['goods_attr']; ?></th>
-              <?php endif; ?>
-              <?php if ($this->_var['show_marketprice']): ?>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['market_prices']; ?></th>
-              <?php endif; ?>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['shop_prices']; ?></th>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['number']; ?></th>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['subtotal']; ?></th>
-              <th bgcolor="#ffffff"><?php echo $this->_var['lang']['handle']; ?></th>
+           <table class="cart_table w1000">
+            <tr class="cart_tab_title">
+              <td class="cart_goods_desc" bgcolor="#ffffff"><?php echo $this->_var['lang']['goods_name']; ?></td>
+              <td bgcolor="#ffffff"><?php echo $this->_var['lang']['shop_prices']; ?></td>
+              <td bgcolor="#ffffff"><?php echo $this->_var['lang']['number']; ?></td>
+              <td bgcolor="#ffffff"><?php echo $this->_var['lang']['subtotal']; ?></td>
+              <td bgcolor="#ffffff"><?php echo $this->_var['lang']['handle']; ?></td>
             </tr>
             <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');if (count($_from)):
     foreach ($_from AS $this->_var['goods']):
 ?>
-            <tr>
-              <td bgcolor="#ffffff" align="center">
+            <tr class="cart_table_goods">
+              <td class="cart_goods_desc">
                 <?php if ($this->_var['goods']['goods_id'] > 0 && $this->_var['goods']['extension_code'] != 'package_buy'): ?>
                   <?php if ($this->_var['show_goods_thumb'] == 1): ?>
-                    <a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank" class="f6"><?php echo $this->_var['goods']['goods_name']; ?></a>
+                  <p class="cart_goods_title"><a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank" class="f6"><?php echo $this->_var['goods']['goods_name']; ?></a></p>
                   <?php elseif ($this->_var['show_goods_thumb'] == 2): ?>
                     <a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" border="0" title="<?php echo htmlspecialchars($this->_var['goods']['goods_name']); ?>" /></a>
                   <?php else: ?>
-                    <a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" border="0" title="<?php echo htmlspecialchars($this->_var['goods']['goods_name']); ?>" /></a><br />
-                    <a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank" class="f6"><?php echo $this->_var['goods']['goods_name']; ?></a>
+                    <a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" width="75px" height="57px" border="0" title="<?php echo htmlspecialchars($this->_var['goods']['goods_name']); ?>" /></a><br />
+                    <p class="cart_goods_title"><a href="goods.php?id=<?php echo $this->_var['goods']['goods_id']; ?>" target="_blank" class="f6"><?php echo $this->_var['goods']['goods_name']; ?></a></p>
                   <?php endif; ?>
                   <?php if ($this->_var['goods']['parent_id'] > 0): ?>
                   <span style="color:#FF0000">（<?php echo $this->_var['lang']['accessories']; ?>）</span>
@@ -86,30 +74,50 @@
                   <?php echo $this->_var['goods']['goods_name']; ?>
                 <?php endif; ?>
               </td>
-              <?php if ($this->_var['show_goods_attribute'] == 1): ?>
-              <td bgcolor="#ffffff"><?php echo nl2br($this->_var['goods']['goods_attr']); ?></td>
-              <?php endif; ?>
-              <?php if ($this->_var['show_marketprice']): ?>
-              <td align="right" bgcolor="#ffffff"><?php echo $this->_var['goods']['market_price']; ?></td>
-              <?php endif; ?>
               <td align="right" bgcolor="#ffffff"><?php echo $this->_var['goods']['goods_price']; ?></td>
               <td align="right" bgcolor="#ffffff">
                 <?php if ($this->_var['goods']['goods_id'] > 0 && $this->_var['goods']['is_gift'] == 0 && $this->_var['goods']['parent_id'] == 0): ?>
-                <input type="text" name="goods_number[<?php echo $this->_var['goods']['rec_id']; ?>]" id="goods_number_<?php echo $this->_var['goods']['rec_id']; ?>" value="<?php echo $this->_var['goods']['goods_number']; ?>" size="4" class="inputBg" style="text-align:center " onkeydown="showdiv(this)"/>
+                <div class="i_box">
+                  <a href="javascript:;" class="J_minus" onclick="goods_cut(<?php echo $this->_var['goods']['goods_id']; ?>)">-</a>
+                  <input type="text" name="goods_number[<?php echo $this->_var['goods']['rec_id']; ?>]" id="number_<?php echo $this->_var['goods']['goods_id']; ?>" value="<?php echo $this->_var['goods']['goods_number']; ?>" size="4" style="text-align:center" onchange="document.getElementById('update_btn').click()" class="J_input" />
+                  <a href="javascript:;" class="J_add" onclick="goods_add(<?php echo $this->_var['goods']['goods_id']; ?>)">+</a>
+                  <script type="text/javascript">
+                  
+                    function goods_cut($val){
+                      var num_val=document.getElementById('number_'+$val);
+                      var new_num=num_val.value;
+                      if(isNaN(new_num)){alert('请输入数字');return false}
+                      var Num = parseInt(new_num);
+                      if(Num>1)Num=Num-1;
+                      num_val.value=Num;
+                      document.getElementById('update_btn').click();
+                  }
+                  
+                  function goods_add($val){
+                      var num_val=document.getElementById('number_'+$val);
+                      var new_num=num_val.value;
+                      if(isNaN(new_num)){alert('请输入数字');return false}
+                      var Num = parseInt(new_num);
+                      Num=Num+1;
+                      num_val.value=Num;
+                      document.getElementById('update_btn').click();
+                  }                                 
+                  </script>
+                </div>
                 <?php else: ?>
                 <?php echo $this->_var['goods']['goods_number']; ?>
                 <?php endif; ?>
               </td>
               <td align="right" bgcolor="#ffffff"><?php echo $this->_var['goods']['subtotal']; ?></td>
               <td align="center" bgcolor="#ffffff">
-                <a href="javascript:if (confirm('<?php echo $this->_var['lang']['drop_goods_confirm']; ?>')) location.href='flow.php?step=drop_goods&amp;id=<?php echo $this->_var['goods']['rec_id']; ?>'; " class="f6"><?php echo $this->_var['lang']['drop']; ?></a>
+                <a href="javascript:if (confirm('<?php echo $this->_var['lang']['drop_goods_confirm']; ?>')) location.href='flow.php?step=drop_goods&amp;id=<?php echo $this->_var['goods']['rec_id']; ?>'; " class="f6"><?php echo $this->_var['lang']['drop']; ?></a> 
                 <?php if ($_SESSION['user_id'] > 0 && $this->_var['goods']['extension_code'] != 'package_buy'): ?>
-                <a href="javascript:if (confirm('<?php echo $this->_var['lang']['drop_goods_confirm']; ?>')) location.href='flow.php?step=drop_to_collect&amp;id=<?php echo $this->_var['goods']['rec_id']; ?>'; " class="f6"><?php echo $this->_var['lang']['drop_to_collect']; ?></a>
+                | <a href="javascript:if (confirm('<?php echo $this->_var['lang']['drop_goods_confirm']; ?>')) location.href='flow.php?step=drop_to_collect&amp;id=<?php echo $this->_var['goods']['rec_id']; ?>'; " class="f6"><?php echo $this->_var['lang']['drop_to_collect']; ?></a>
                 <?php endif; ?>            </td>
             </tr>
             <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           </table>
-          <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+          <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" style="display:none">
             <tr>
               <td bgcolor="#ffffff">
               <?php if ($this->_var['discount'] > 0): ?><?php echo $this->_var['your_discount']; ?><br /><?php endif; ?>
@@ -117,18 +125,16 @@
               </td>
               <td align="right" bgcolor="#ffffff">
                 <input type="button" value="<?php echo $this->_var['lang']['clear_cart']; ?>" class="bnt_blue_1" onclick="location.href='flow.php?step=clear'" />
-                <input name="submit" type="submit" class="bnt_blue_1" value="<?php echo $this->_var['lang']['update_cart']; ?>" />
+                <input name="submit" type="submit" class="bnt_blue_1" id="update_btn" value="<?php echo $this->_var['lang']['update_cart']; ?>" />
               </td>
             </tr>
           </table>
           <input type="hidden" name="step" value="update_cart" />
         </form>
-        <table width="99%" align="center" border="0" cellpadding="5" cellspacing="0" bgcolor="#dddddd">
-          <tr>
-            <td bgcolor="#ffffff"><a href="./"><img src="themes/my/images/continue.gif" alt="continue" /></a></td>
-            <td bgcolor="#ffffff" align="right"><a href="flow.php?step=checkout"><img src="themes/my/images/checkout.gif" alt="checkout" /></a></td>
-          </tr>
-        </table>
+        <div class="cart_result">
+          <div class="cart_price_result">已选<span class="cart_goods_num"><?php echo $this->_var['total']['real_goods_count']; ?></span>件<span style="margin-left:20px;"></span> 应付：<span class="cart_total_price"><?php echo $this->_var['total']['goods_price']; ?></span></div>
+          <a href="flow.php?step=checkout"><img class="cart_jiesuan_btn" src="themes/my/images/cart_07.png" alt=""></a>
+        </div>
        <?php if ($_SESSION['user_id'] > 0): ?>
        <?php echo $this->smarty_insert_scripts(array('files'=>'transport.js')); ?>
        <script type="text/javascript" charset="utf-8">
@@ -338,6 +344,16 @@
           }
           
         </script>
+          <div class="w1000 cart_route">
+            <span class="cart_title">填写核对订单信息</span>
+            <a href="flow.php">我的购物车</a> &gt; 
+            <a href="flow.php?step=consignee" class="link_on">填写核对订单信息</a> &gt; 
+            <a href="flow.php?step=checkout">选择支付方式</a> &gt; 
+            <a href="flow.php?step=done">成功提交订单</a>
+            <?php if ($this->_var['cart_title']): ?>
+            <span class="goon_shopping"><a href="./">继续购物&gt;</a></span>
+            <?php endif; ?>
+          </div>
         
         <?php $_from = $this->_var['consignee_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('sn', 'consignee');if (count($_from)):
     foreach ($_from AS $this->_var['sn'] => $this->_var['consignee']):
@@ -349,6 +365,16 @@
         <?php endif; ?>
 
         <?php if ($this->_var['step'] == "checkout"): ?>
+          <div class="w1000 cart_route">
+            <span class="cart_title">我的购物车</span>
+            <a href="flow.php">我的购物车</a> &gt; 
+            <a href="flow.php?step=consignee">填写核对订单信息</a> &gt; 
+            <a href="flow.php?step=checkout" class="link_on">选择支付方式</a> &gt; 
+            <a href="flow.php?step=done">成功提交订单</a>
+            <?php if ($this->_var['cart_title']): ?>
+            <span class="goon_shopping"><a href="./">继续购物&gt;</a></span>
+            <?php endif; ?>
+          </div>
         <form action="flow.php" method="post" name="theForm" id="theForm" onsubmit="return checkOrderForm(this)">
         <script type="text/javascript">
         var flow_no_payment = "<?php echo $this->_var['lang']['flow_no_payment']; ?>";
@@ -686,6 +712,16 @@
 
         <?php if ($this->_var['step'] == "done"): ?>
         
+          <div class="w1000 cart_route">
+            <span class="cart_title">我的购物车</span>
+            <a href="flow.php">我的购物车</a> &gt; 
+            <a href="flow.php?step=consignee">填写核对订单信息</a> &gt; 
+            <a href="flow.php?step=checkout">选择支付方式</a> &gt; 
+            <a href="flow.php?step=done" class="link_on">成功提交订单</a>
+            <?php if ($this->_var['cart_title']): ?>
+            <span class="goon_shopping"><a href="./">继续购物&gt;</a></span>
+            <?php endif; ?>
+          </div>
         <div class="flowBox" style="margin:30px auto 70px auto;">
          <h6 style="text-align:center; height:30px; line-height:30px;"><?php echo $this->_var['lang']['remember_order_number']; ?>: <font style="color:red"><?php echo $this->_var['order']['order_sn']; ?></font></h6>
           <table width="99%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" style="border:1px solid #ddd; margin:20px auto;" >
@@ -894,42 +930,7 @@
 
 
 
-</div>
-<div class="blank5"></div>
-
-<div class="block">
-  <div class="box">
-   <div class="helpTitBg clearfix">
-    <?php echo $this->fetch('library/help.lbi'); ?>
-   </div>
-  </div>
-</div>
-<div class="blank"></div>
-
-
-<?php if ($this->_var['img_links'] || $this->_var['txt_links']): ?>
-<div id="bottomNav" class="box">
- <div class="box_1">
-  <div class="links clearfix">
-    <?php $_from = $this->_var['img_links']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'link');if (count($_from)):
-    foreach ($_from AS $this->_var['link']):
-?>
-    <a href="<?php echo $this->_var['link']['url']; ?>" target="_blank" title="<?php echo $this->_var['link']['name']; ?>"><img src="<?php echo $this->_var['link']['logo']; ?>" alt="<?php echo $this->_var['link']['name']; ?>" border="0" /></a>
-    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-    <?php if ($this->_var['txt_links']): ?>
-    <?php $_from = $this->_var['txt_links']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'link');if (count($_from)):
-    foreach ($_from AS $this->_var['link']):
-?>
-    [<a href="<?php echo $this->_var['link']['url']; ?>" target="_blank" title="<?php echo $this->_var['link']['name']; ?>"><?php echo $this->_var['link']['name']; ?></a>]
-    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-    <?php endif; ?>
-  </div>
- </div>
-</div>
-<?php endif; ?>
-
-<div class="blank"></div>
-<?php echo $this->fetch('library/page_footer.lbi'); ?>
+</div></div>
 </body>
 <script type="text/javascript">
 var process_request = "<?php echo $this->_var['lang']['process_request']; ?>";
@@ -944,4 +945,4 @@ var btn_buy = "<?php echo $this->_var['lang']['btn_buy']; ?>";
 var is_cancel = "<?php echo $this->_var['lang']['is_cancel']; ?>";
 var select_spe = "<?php echo $this->_var['lang']['select_spe']; ?>";
 </script>
-</html>
+<?php echo $this->fetch('library/page_footer.lbi'); ?>

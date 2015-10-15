@@ -452,7 +452,8 @@ function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =
 
     if (!empty($cats))
     {
-        $sql .= " AND (" . $cats . " OR " . get_extension_goods($cats) .")";
+        //$sql .= " AND (" . $cats . " OR " . get_extension_goods($cats) .")";
+        $sql .= " AND  cat_id=" . $cats;
     }
 
     $order_type = $GLOBALS['_CFG']['recommend_order'];
@@ -597,6 +598,7 @@ function get_goods_info($goods_id)
         /* 修正商品图片 */
         $row['goods_img']   = get_image_path($goods_id, $row['goods_img']);
         $row['goods_thumb'] = get_image_path($goods_id, $row['goods_thumb'], true);
+        $row['goods_brief'] =  $row['goods_brief'];
 
         return $row;
     }
