@@ -16,18 +16,18 @@
           <?php endif; ?>
 
           <?php if ($this->_var['skype']): ?>
-          <?php $_from = $this->_var['skype']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'skype_0_01035600_1444893592');if (count($_from)):
-    foreach ($_from AS $this->_var['skype_0_01035600_1444893592']):
+          <?php $_from = $this->_var['skype']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'skype_0_57565700_1444988628');if (count($_from)):
+    foreach ($_from AS $this->_var['skype_0_57565700_1444988628']):
 ?>
-          <li>邮编：<?php echo $this->_var['skype_0_01035600_1444893592']; ?></li>
+          <li>邮编：<?php echo $this->_var['skype_0_57565700_1444988628']; ?></li>
           <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           <?php endif; ?>
 
           <?php if ($this->_var['qq']): ?>
-          <?php $_from = $this->_var['qq']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'qq_0_01054300_1444893592');if (count($_from)):
-    foreach ($_from AS $this->_var['qq_0_01054300_1444893592']):
+          <?php $_from = $this->_var['qq']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'qq_0_57578100_1444988628');if (count($_from)):
+    foreach ($_from AS $this->_var['qq_0_57578100_1444988628']):
 ?>
-          <li>QQ：<?php echo $this->_var['qq_0_01054300_1444893592']; ?></li>
+          <li>QQ：<?php echo $this->_var['qq_0_57578100_1444988628']; ?></li>
           <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           <?php endif; ?>
         </ul>

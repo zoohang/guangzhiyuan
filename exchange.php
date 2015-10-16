@@ -170,7 +170,7 @@ elseif ($_REQUEST['act'] == 'view')
             $smarty->assign('goods',              $goods);
             $smarty->assign('goods_id',           $goods['goods_id']);
             $smarty->assign('categories',         get_categories_tree());  // 分类树
-
+            $smarty->assign('best_goods',      get_category_recommend_goods('best','17'));    // 推荐商品
             /* meta */
             $smarty->assign('keywords',           htmlspecialchars($goods['keywords']));
             $smarty->assign('description',        htmlspecialchars($goods['goods_brief']));
@@ -204,7 +204,6 @@ elseif ($_REQUEST['act'] == 'view')
             $smarty->assign('specification',       $properties['spe']);                              // 商品规格
 
             $smarty->assign('pictures',            get_goods_gallery($goods_id));                    // 商品相册
-
             assign_dynamic('exchange_goods');
         }
     }

@@ -716,6 +716,7 @@ label[for=checkboxid2] a{
 	border-bottom: 1px solid #ccc;
 	padding: 5px 0;
 	font-size: 14px;
+	margin-bottom: 10px; 
 }
 .goods_option_row{
 	margin: 10px 0;
@@ -1005,4 +1006,128 @@ label[for=checkboxid2] a{
     border: 1px solid #ccc;
     text-align: center;
     height: 17px;
+}
+.exchange_btn{
+	width: 138px;
+	height: 45px;
+	background-color: #f87d01;
+	color: #fff;
+	font-size: 21px;
+	font-family: 微软雅黑;
+	border: 0;
+	margin-top: 30px;
+}
+#exchange_div{
+	width: 750px;
+	height: 450px;
+	z-index: 888;
+	border: 10px solid #fff;
+	background-color: #f7f7f7;
+	position: absolute;
+	top: 150px;
+	left: 22%;
+	display: none;
+}
+#exchange_div img{
+	float: right;
+	cursor: pointer;
+}
+#exchange_div input{
+	  height: 25px;
+    width: 217px;
+    line-height: 30px;
+    font-size: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+.exchange_form{
+	margin: 10px;
+}
+.exchange_form textarea{
+	width: 724px;
+	height: 150px;
+	resize: none;
+}
+.exchange_form .goods_price_desc{
+	font-size: 20px;
+}
+#exchange_div .exchange_btn{
+	height: 50px;
+	font-size: 22px;
+}
+.cate_desc_title{
+	font-size: 18px;
+	font-family: 微软雅黑;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.cate_desc_content{
+	padding: 20px 0;
+}
+.service_goods_title{
+	float: left;
+	font-family: 微软雅黑;
+	color: #f87d01;
+	font-size: 18px;
+}
+.service_goods_area{
+	float: right;
+}
+.service_goods{
+	padding-top:20px;
+	border-top: 1px solid #ccc; 
+}
+.service_goods_row{
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.service_goods_area select{
+	width: 200px;
+}
+.service_goods_list{
+	overflow: hidden;
+}
+.service_goods_list_one{
+	width: 370px;
+	margin-right: 10px;
+	float: left;
+}
+.service_title_name{
+	font-size: 	18px;
+	font-family: 微软雅黑;
+	margin-right: 10px;
+}
+.service_title_info{
+	font-size: 13px;
+	font-family: 微软雅黑;
+	margin-right: 10px;
+}
+.service_order_btn{
+	width: 80px;
+	height: 30px;
+	font-size: 15px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	background-color: #888;
+}
+.service_goods_miaoshu{
+	width: 190px;
+	float: right;
+	font-size: 13px;
+	font-family: 微软雅黑;
+}
+.service_goods_miaoshu_desc{
+	height: 85px;
+}
+.service_price{
+	font-size: 15px;
+}
+.service_goods_content{
+	padding: 15px 0;
+}
+.service_goods_miaoshu .service_order_btn{
+	float: left;
+	margin-top: 10px;
 }

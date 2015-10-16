@@ -29,7 +29,7 @@ function reg(str){
 
 </script>
   <!--当前位置 start-->
-  <div class="w1000">
+<div class="w1000">
    <div class="w1000 url_here">
     <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   </div>
@@ -83,10 +83,10 @@ function reg(str){
       <p class="goods_title">{$goods.goods_style_name}</p>
       <p class="goods_title_desc">{$goods.goods_brief|truncate:50}</p>
       <p class="goods_price_desc">金额：<span class="goods_price" id="ECS_GOODS_AMOUNT">{$goods.shop_price}元</span><span style="color:#f87d01;"></span></p>
-      <p class="option_attr">选择规格</p>
       <div class="goods_option_row">
         <!-- {* 开始循环所有可选属性 *} -->
         <!-- {foreach from=$specification item=spec key=spec_key} -->
+        <p class="option_attr">选择规格</p>
         
           <!-- {* 判断属性是复选还是单选 *} -->
           <!-- {if $spec.attr_type eq 1} -->
@@ -239,6 +239,7 @@ function reg(str){
   var goodsId = {$goods_id};
   var now_time = {$now_time};
 
+
     $(function () {
     $('.goods_option_one:first').addClass('option_select');
   })
@@ -246,7 +247,6 @@ function reg(str){
     $('.goods_option_one').removeClass('option_select');
     $(this).addClass('option_select');
   });
-
   <!-- {literal} -->
   onload = function(){
     changePrice();

@@ -2,19 +2,6 @@
 $data = array (
   0 => 
   array (
-    'cat_id' => '1',
-    'cat_name' => '手机类型',
-    'measure_unit' => '',
-    'parent_id' => '0',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '5',
-    'sort_order' => '50',
-    'has_children' => '4',
-    'goods_num' => 0,
-  ),
-  1 => 
-  array (
     'cat_id' => '16',
     'cat_name' => '课程培训',
     'measure_unit' => '',
@@ -26,7 +13,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '5',
   ),
-  2 => 
+  1 => 
   array (
     'cat_id' => '17',
     'cat_name' => '能量产品',
@@ -39,6 +26,19 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '4',
   ),
+  2 => 
+  array (
+    'cat_id' => '18',
+    'cat_name' => '服务项目',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '51',
+    'has_children' => '4',
+    'goods_num' => 0,
+  ),
   3 => 
   array (
     'cat_id' => '6',
@@ -48,22 +48,22 @@ $data = array (
     'is_show' => '1',
     'show_in_nav' => '0',
     'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '4',
+    'sort_order' => '52',
+    'has_children' => '1',
     'goods_num' => 0,
   ),
   4 => 
   array (
-    'cat_id' => '4',
-    'cat_name' => '3G手机',
+    'cat_id' => '1',
+    'cat_name' => '手机类型',
     'measure_unit' => '',
-    'parent_id' => '1',
+    'parent_id' => '0',
     'is_show' => '1',
     'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '2',
+    'grade' => '5',
+    'sort_order' => '53',
+    'has_children' => '1',
+    'goods_num' => 0,
   ),
   5 => 
   array (
@@ -76,35 +76,9 @@ $data = array (
     'grade' => '5',
     'sort_order' => '50',
     'has_children' => '0',
-    'goods_num' => 2,
+    'goods_num' => 16,
   ),
   6 => 
-  array (
-    'cat_id' => '2',
-    'cat_name' => 'CDMA手机',
-    'measure_unit' => '',
-    'parent_id' => '1',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  7 => 
-  array (
-    'cat_id' => '3',
-    'cat_name' => 'GSM手机',
-    'measure_unit' => '台',
-    'parent_id' => '1',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '4',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '12',
-  ),
-  8 => 
   array (
     'cat_id' => '8',
     'cat_name' => '耳机',
@@ -115,14 +89,40 @@ $data = array (
     'grade' => '0',
     'sort_order' => '50',
     'has_children' => '0',
-    'goods_num' => '3',
+    'goods_num' => '5',
+  ),
+  7 => 
+  array (
+    'cat_id' => '19',
+    'cat_name' => '健康养生',
+    'measure_unit' => '',
+    'parent_id' => '18',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  8 => 
+  array (
+    'cat_id' => '22',
+    'cat_name' => '其他项目',
+    'measure_unit' => '',
+    'parent_id' => '18',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
   ),
   9 => 
   array (
-    'cat_id' => '9',
-    'cat_name' => '电池',
+    'cat_id' => '20',
+    'cat_name' => '心理资讯',
     'measure_unit' => '',
-    'parent_id' => '6',
+    'parent_id' => '18',
     'is_show' => '1',
     'show_in_nav' => '0',
     'grade' => '0',
@@ -132,29 +132,55 @@ $data = array (
   ),
   10 => 
   array (
-    'cat_id' => '11',
-    'cat_name' => '读卡器和内存卡',
+    'cat_id' => '21',
+    'cat_name' => '能量疗愈',
     'measure_unit' => '',
-    'parent_id' => '6',
+    'parent_id' => '18',
     'is_show' => '1',
     'show_in_nav' => '0',
     'grade' => '0',
     'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '2',
+    'has_children' => '3',
+    'goods_num' => 0,
   ),
   11 => 
   array (
-    'cat_id' => '7',
-    'cat_name' => '充电器',
+    'cat_id' => '25',
+    'cat_name' => '九龙坡区',
     'measure_unit' => '',
-    'parent_id' => '6',
+    'parent_id' => '21',
     'is_show' => '1',
     'show_in_nav' => '0',
     'grade' => '0',
     'sort_order' => '50',
     'has_children' => '0',
-    'goods_num' => 0,
+    'goods_num' => '1',
+  ),
+  12 => 
+  array (
+    'cat_id' => '23',
+    'cat_name' => '江北区',
+    'measure_unit' => '',
+    'parent_id' => '21',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '1',
+  ),
+  13 => 
+  array (
+    'cat_id' => '24',
+    'cat_name' => '渝北区',
+    'measure_unit' => '',
+    'parent_id' => '21',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '1',
   ),
 );
 ?>

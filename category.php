@@ -333,6 +333,7 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     $smarty->assign('ur_here',          $position['ur_here']);  // 当前位置
 
     $smarty->assign('categories',       get_categories_tree($cat_id)); // 分类树
+    //var_dump(get_categories_tree($cat_id));
     $smarty->assign('helps',            get_shop_help());              // 网店帮助
     $smarty->assign('top_goods',        get_top10());                  // 销售排行
     $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
@@ -402,6 +403,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
 }
 if($cat_id == '16'){
     $smarty->display('category_kecheng.dwt', $cache_id);
+}elseif($cat_id == 21){
+    $smarty->display('category_service.dwt', $cache_id);
 }else{
     $smarty->display('category.dwt', $cache_id);
 }

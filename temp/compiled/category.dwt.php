@@ -26,7 +26,7 @@
           <div class="cat_block">
             <p class="cat_title"><img src="themes/my/images/icon.png" alt="">积分商城</p>
             <ul class="cat_child">
-              <li><img src="themes/my/images/goods_28.png" alt="" /><a href="">积分产品</a></li>
+              <li><img src="themes/my/images/goods_28.png" alt="" /><a href="exchange.php">积分产品</a></li>
             </ul>
           </div>
           <div class="cat_block">
@@ -48,13 +48,12 @@
     foreach ($_from AS $this->_var['goods']):
 ?>
           <?php if ($this->_var['goods']): ?>
-          <div class="goods_jifen_one">
-            <a href="<?php echo $this->_var['goods']['url']; ?>"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" width="179px" height="136px" alt=""></a>
-            <div class="cat_goods_jifen">
-              <p class="jifen_title"><a href="<?php echo $this->_var['goods']['url']; ?>"><?php echo $this->_var['goods']['name']; ?></a></p>
-              <p class="jifen_desc"><?php echo sub_str($this->_var['goods']['goods_brief'],150); ?></p>
-              <p class="jifen_desc">需要：<span class="jifen_price"><?php echo $this->_var['goods']['exchange_integral']; ?></span>积分</p>
-              <p class="jifen_duihuan"><a href="">立即兑换&gt;&gt;</a></p>
+          <div class="goods_one">
+            <a href="<?php echo $this->_var['goods']['url']; ?>"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" width="221px" height="168px" alt=""></a>
+            <div class="add_cart_div"><a href="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)">添加到购物车</a></div>
+            <p class="cat_goods_title"><a href="<?php echo $this->_var['goods']['url']; ?>"><?php echo $this->_var['goods']['goods_name']; ?></a></p>
+            <div class="cat_goods_desc">
+              <?php echo sub_str($this->_var['goods']['goods_brief'],35); ?>
             </div>
           </div>
           <?php endif; ?>
@@ -67,14 +66,12 @@
   <script type="text/javascript">
 
 
-    $('.goods_list div:first-child').css('padding-top','0');
-    
-    $('.goods_jifen_one').hover(function () {
-      $(this).css('background-color','#f7f7f7');
-      $(this).find('.jifen_duihuan a').css('color','#f87d01');
-    }, function () {
-      $(this).css('background-color','#fff');
-      $(this).find('.jifen_duihuan a').css('color','#333');
+    $('.goods_one').hover(function () {
+      $(this).children('.add_cart_div').show();
+      $(this).children('.cat_goods_desc').css('border-bottom','5px solid #f87d01');
+    },function () {
+      $(this).children('.add_cart_div').hide();
+      $(this).children('.cat_goods_desc').css('border-bottom','5px solid #000');
     });
   
   </script>

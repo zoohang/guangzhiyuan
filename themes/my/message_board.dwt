@@ -41,10 +41,9 @@
           <div class="form_control">
               <p class="liuyan_title">姓名：</p>
              <!--{if $smarty.session.user_name}-->
-                <font class="f4_b">{$username}</font>
-                
+                 <input type="text" value="{$username}" name="user_name">
                 <!--{else}-->
-                {$lang.anonymous}
+                 <input type="text" name="user_name">
                 <!--{/if}-->
             </div>
             <div class="form_control">
@@ -91,6 +90,8 @@
          {
           var msg = new Object;
 
+          msg.user_name  = $('input[name=user_name]').val();
+          msg.tel  = $('input[name=tel]').val();
           msg.user_email  = frm.elements['user_email'].value;
           msg.msg_title   = frm.elements['msg_title'].value;
           msg.msg_content = frm.elements['msg_content'].value;
@@ -109,10 +110,20 @@
         {
           msg_err += msg_empty_email + '\n';
         }
+
+        if (msg.user_name.length == 0)
+        {
+          msg_err += '名称不能为空' + '\n';
+        }
+        if (msg.tel.length == 0)
+        {
+          msg_err += '电话不能为空' + '\n';
+        }
         if (msg.msg_title.length == 0)
         {
           msg_err += msg_title_empty + '\n';
         }
+
         if (frm.elements['captcha'] && msg.captcha.length==0)
         {
           msg_err += msg_captcha_empty + '\n'
