@@ -41,10 +41,10 @@
         <div class="w760 goods_list">
           <div class="cate_desc">
             <p class="cate_desc_title">
-              原生命平衡疗法
+              <?php echo $this->_var['keywords']; ?>
             </p>
             <div class="w760 cate_desc_content">
-              如果从交易额来算，10月14日中国铁塔宣布收购三大运营商2314亿资产，完全与前几日戴尔670亿美金收购EMC想提并论。因为涉及国有资产，不少人会觉得这是左手倒右手，甚至认为铁塔公司会因为垄断而产生诸多新的问题，甚至诱生腐败。但从通信行业的角度来说，铁塔公司虽然并不能解决所有电信行业深化改革的难题，但至少从铁塔公司成立的那一天起，它一直是朝着正确的方向在前进。
+              <?php echo $this->_var['description']; ?>
             </div>
           </div>
           <div class="service_goods">
@@ -55,7 +55,7 @@
               <div class="service_goods_area">
                 <select name="" id="choose_erea">
                   <option value="category.php?id=21">地区 | --请选择--</option>
-                  <?php $_from = $this->_var['categories']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');if (count($_from)):
+                  <?php $_from = $this->_var['categories_xiala']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');if (count($_from)):
     foreach ($_from AS $this->_var['cat']):
 ?>
                   <?php if ($this->_var['cat']['id'] == 21): ?>
@@ -86,7 +86,7 @@
                   <div class="service_goods_miaoshu">
                     <p class="service_goods_miaoshu_desc">信行业的角度来说，铁塔公司虽然并不能解决所有电信行业深化改革的难题，但至少从铁塔公司成立的那一天起，它一直是</p>
                     <p class="service_price">价格：<span class="jifen_price">5000</span>元</p>
-                    <a href=""><div class="service_order_btn">预约</div></a>
+                    <a href="javascript:void(0);"><div class="service_order_btn">预约</div></a>
                   </div>
                 </div>
               </div>
@@ -104,7 +104,6 @@
   </div>
   <script type="text/javascript">
   $('#choose_erea').change(function () {
-    alert( $(this).val());
     window.location.href = $(this).val();
   });
 

@@ -80,7 +80,7 @@ function reg(str)
           <div class="items">
             <ul>
               <!-- {foreach from=$pictures item=picture}-->
-              <li><img alt="佳能" bimg="{$picture.img_url}" src="{$picture.thumb_url}" onmousemove="preview(this);"></li>
+              <li><img alt="" bimg="{$picture.img_url}" src="{$picture.thumb_url}" onmousemove="preview(this);"></li>
               <!--{/foreach}-->
             </ul>
           </div>
@@ -118,10 +118,10 @@ function reg(str)
           <!-- {* 结束循环可选属性 *} -->
         </div>
         <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
-        <!--{if $smarty.session.user_id gt 1}-->
+        <!--{if $smarty.session.user_id gte 1}-->
         <input type="button" value="{$lang.exchange_goods}" class="exchange_btn"/>
         <!--{else}-->
-        <a href="user.php?act=login"><input type="button" value="请先登录" class="exchange_btn login"/></a>
+        <a href="user.php?act=login"><input type="button" value="请先登录" class="exchange_btn_login"/></a>
         <!--{/if}-->
       </form>
       </div>

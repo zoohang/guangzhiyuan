@@ -93,32 +93,6 @@ $data = array (
   ),
   7 => 
   array (
-    'cat_id' => '19',
-    'cat_name' => '健康养生',
-    'measure_unit' => '',
-    'parent_id' => '18',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  8 => 
-  array (
-    'cat_id' => '22',
-    'cat_name' => '其他项目',
-    'measure_unit' => '',
-    'parent_id' => '18',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  9 => 
-  array (
     'cat_id' => '20',
     'cat_name' => '心理资讯',
     'measure_unit' => '',
@@ -130,7 +104,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  10 => 
+  8 => 
   array (
     'cat_id' => '21',
     'cat_name' => '能量疗愈',
@@ -143,20 +117,33 @@ $data = array (
     'has_children' => '3',
     'goods_num' => 0,
   ),
-  11 => 
+  9 => 
   array (
-    'cat_id' => '25',
-    'cat_name' => '九龙坡区',
+    'cat_id' => '19',
+    'cat_name' => '健康养生',
     'measure_unit' => '',
-    'parent_id' => '21',
+    'parent_id' => '18',
     'is_show' => '1',
     'show_in_nav' => '0',
     'grade' => '0',
     'sort_order' => '50',
     'has_children' => '0',
-    'goods_num' => '1',
+    'goods_num' => 0,
   ),
-  12 => 
+  10 => 
+  array (
+    'cat_id' => '22',
+    'cat_name' => '其他项目',
+    'measure_unit' => '',
+    'parent_id' => '18',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  11 => 
   array (
     'cat_id' => '23',
     'cat_name' => '江北区',
@@ -169,10 +156,23 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '1',
   ),
-  13 => 
+  12 => 
   array (
     'cat_id' => '24',
     'cat_name' => '渝北区',
+    'measure_unit' => '',
+    'parent_id' => '21',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '1',
+  ),
+  13 => 
+  array (
+    'cat_id' => '25',
+    'cat_name' => '九龙坡区',
     'measure_unit' => '',
     'parent_id' => '21',
     'is_show' => '1',

@@ -6,7 +6,13 @@
 {* 包含脚本文件 *}
 {insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
 {insert_scripts files='common.js,global.js,compare.js'}
-
+  <div id="DialogBGDiv" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 666;display:none;">
+      <div style="position:relative;width:100%;height:100%;">
+        <div id="_DialogBGMask" style="position: absolute; opacity: 0.4; width: 100%; height: 100%; background-color: rgb(51, 51, 51);">   
+        </div>
+      </div>
+    </div>
+    
   <div class="w100">
     <div class="w1000">
       <div class="w1000 url_here">
@@ -50,9 +56,32 @@
               <p class="jifen_title"><a href="{$goods.url}">{$goods.name}</a></p>
               <p class="jifen_desc">{$goods.goods_brief|truncate:150}</p>
               <p class="jifen_desc">需要：<span class="jifen_price">{$goods.exchange_integral}</span>积分</p>
-              <p class="jifen_duihuan"><a href="">立即兑换&gt;&gt;</a></p>
+              <p class="jifen_duihuan">
+                <a href="javascript:void(0);" class="exchange_btn_duihuan" isLogin="{$smarty.session.user_name}">立即兑换&gt;&gt;</a>
+              </p>
             </div>
           </div>
+          <!--div购买弹框start-->
+          <div id="exchange_div">
+            <img src="images/exchange_close.png" onclick="closeDiv()" alt="">
+            <div class="exchange_form">
+              <p class="goods_price_desc">积分兑换：{$goods.name}</p>
+              <p class="goods_price_desc">所需积分：{$goods.exchange_integral}/份</p>
+              <form action="message.php" method="post" name="formMsg" onSubmit="return submitMsgBoard(this)">
+                <input type="text" name="user_name" value="{$smarty.session.user_name}" placeholder="姓名">
+                <input type="text" name="tel" placeholder="电话">
+                <input type="text" name="num" style="margin-right:0;" placeholder="兑换数量">
+                <input type="text" name="user_email" value="{$smarty.session.email|escape}" placeholder="邮箱">
+                <input type="text" style="width:466px;margin-right:0" name="address" placeholder="地址">
+                <textarea name="msg_content" id="">备注</textarea>
+                <input name="msg_title" type="hidden" value="兑换 {$goods.goods_name}" />
+                <input type="hidden" name="msg_type" value="4">
+                <input type="hidden" name="act" value="act_add_message">
+                <input type="submit" class="exchange_btn">
+              </form>
+            </div>
+          </div>
+          <!--div购买弹框end-->
           <!--{/if}-->
           <!--{/foreach}-->
           <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
@@ -61,7 +90,21 @@
     </div>
   </div>
   <script type="text/javascript">
-
+    $('.exchange_btn_duihuan').click(function () {
+      var isLogin = $(this).attr('isLogin');
+      if(isLogin == '' || isLogin < 1){
+        alert('请先登录!');
+        window.location.href = 'user.php?act=login';
+        return false;
+      }
+      $('#exchange_div').show();
+      var htmlH = window.document.body.offsetHeight;
+      $('#DialogBGDiv').css('height',htmlH).show();
+    });
+    function closeDiv() {
+      $('#exchange_div').hide();
+      $('#DialogBGDiv').hide();
+    }
 
     $('.goods_list div:first-child').css('padding-top','0');
     

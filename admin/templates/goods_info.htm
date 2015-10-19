@@ -29,9 +29,9 @@
     <!-- tab body -->
     <div id="tabbody-div">
       <form enctype="multipart/form-data" action="" method="post" name="theForm" >
-        <!-- 鏈€澶ф枃浠堕檺鍒 -->
+        <!-- éˆâ‚¬æ¾¶Ñ„æžƒæµ å •æªºé’ -->
         <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-        <!-- 閫氱敤淇℃伅 -->
+        <!-- é–«æ°±æ•¤æ·‡â„ƒä¼… -->
         <table width="90%" id="general-table" align="center">
           <tr>
             <td class="label">{$lang.lab_goods_name}</td>
@@ -115,7 +115,7 @@
           </tr>
           {/if}
 
-          <!--鍟嗗搧浼樻儬浠锋牸-->
+          <!--éŸå——æ§æµ¼æ¨»å„¬æµ é”‹ç‰¸-->
           <tr>
             <td class="label"><a href="javascript:showNotice('volumePrice');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.lab_volume_price}</td>
             <td>
@@ -137,7 +137,7 @@
               <span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="volumePrice">{$lang.notice_volume_price}</span>
             </td>
           </tr>
-          <!--鍟嗗搧浼樻儬浠锋牸 end -->
+          <!--éŸå——æ§æµ¼æ¨»å„¬æµ é”‹ç‰¸ end -->
 
           <tr>
             <td class="label">{$lang.lab_market_price}</td>
@@ -199,14 +199,14 @@
           </tr>
         </table>
 
-        <!-- 璇︾粏鎻忚堪 -->
+        <!-- ç’‡ï¸¾ç²éŽ»å¿šå ª -->
         <table width="90%" id="detail-table" style="display:none">
           <tr>
             <td>{$FCKeditor}</td>
           </tr>
         </table>
 
-        <!-- 鍏朵粬淇℃伅 -->
+        <!-- éæœµç²¬æ·‡â„ƒä¼… -->
         <table width="90%" id="mix-table" style="display:none" align="center">
           {if $code eq ''}
           <tr>
@@ -258,7 +258,7 @@
           </tr>
         </table>
 
-        <!-- 灞炴€т笌瑙勬牸 -->
+        <!-- çžç‚´â‚¬Ñ‚ç¬Œç‘™å‹¬ç‰¸ -->
         {if $goods_type_list}
         <table width="90%" id="properties-table" style="display:none" align="center">
           <tr>
@@ -276,9 +276,9 @@
         </table>
         {/if}
 
-        <!-- 鍟嗗搧鐩稿唽 -->
+        <!-- éŸå——æ§é©ç¨¿å”½ -->
         <table width="90%" id="gallery-table" style="display:none" align="center">
-          <!-- 鍥剧墖鍒楄〃 -->
+          <!-- é¥å‰§å¢–é’æ¥„ã€ƒ -->
           <tr>
             <td>
               {foreach from=$img_list item=img key=i}
@@ -293,7 +293,7 @@
             </td>
           </tr>
           <tr><td>&nbsp;</td></tr>
-          <!-- 涓婁紶鍥剧墖 -->
+          <!-- æ¶“å©ç´¶é¥å‰§å¢– -->
           <tr>
             <td>
               <a href="javascript:;" onclick="addImg(this)">[+]</a>
@@ -304,9 +304,9 @@
           </tr>
         </table>
 
-        <!-- 鍏宠仈鍟嗗搧 -->
+        <!-- éå® ä»ˆéŸå——æ§ -->
         <table width="90%" id="linkgoods-table" style="display:none" align="center">
-          <!-- 鍟嗗搧鎼滅储 -->
+          <!-- éŸå——æ§éŽ¼æ»…å‚¨ -->
           <tr>
             <td colspan="3">
               <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
@@ -317,7 +317,7 @@
                 onclick="searchGoods(sz1, 'cat_id1','brand_id1','keyword1')" />
             </td>
           </tr>
-          <!-- 鍟嗗搧鍒楄〃 -->
+          <!-- éŸå——æ§é’æ¥„ã€ƒ -->
           <tr>
             <th>{$lang.all_goods}</th>
             <th>{$lang.handler}</th>
@@ -345,9 +345,9 @@
           </tr>
         </table>
 
-        <!-- 閰嶄欢 -->
+        <!-- é–°å¶„æ¬¢ -->
         <table width="90%" id="groupgoods-table" style="display:none" align="center">
-          <!-- 鍟嗗搧鎼滅储 -->
+          <!-- éŸå——æ§éŽ¼æ»…å‚¨ -->
           <tr>
             <td colspan="3">
               <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
@@ -357,7 +357,7 @@
               <input type="button" value="{$lang.button_search}" onclick="searchGoods(sz2, 'cat_id2', 'brand_id2', 'keyword2')" class="button" />
             </td>
           </tr>
-          <!-- 鍟嗗搧鍒楄〃 -->
+          <!-- éŸå——æ§é’æ¥„ã€ƒ -->
           <tr>
             <th>{$lang.all_goods}</th>
             <th>{$lang.handler}</th>
@@ -384,9 +384,9 @@
           </tr>
         </table>
 
-        <!-- 鍏宠仈鏂囩珷 -->
+        <!-- éå® ä»ˆé‚å›©ç· -->
         <table width="90%" id="article-table" style="display:none" align="center">
-          <!-- 鏂囩珷鎼滅储 -->
+          <!-- é‚å›©ç·éŽ¼æ»…å‚¨ -->
           <tr>
             <td colspan="3">
               <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
@@ -394,7 +394,7 @@
               <input type="button" value="{$lang.button_search}" onclick="searchArticle()" class="button" />
             </td>
           </tr>
-          <!-- 鏂囩珷鍒楄〃 -->
+          <!-- é‚å›©ç·é’æ¥„ã€ƒ -->
           <tr>
             <th>{$lang.all_article}</th>
             <th>{$lang.handler}</th>
@@ -455,7 +455,7 @@
           handleAutoThumb(document.forms['theForm'].elements['auto_thumb'].checked);
       }
 
-      // 妫€鏌ユ柊璁㈠崟
+      // å¦«â‚¬éŒãƒ¦æŸŠç’ãˆ å´Ÿ
       startCheckOrder();
       {/literal}
       {foreach from=$user_rank_list item=item}
@@ -512,7 +512,7 @@
 }
 
   /**
-   * 鍒囨崲鍟嗗搧绫诲瀷
+   * é’å›¨å´²éŸå——æ§ç»«è¯²ç€·
    */
   function getAttrList(goodsId)
   {
@@ -532,10 +532,10 @@
   }
 
   /**
-   * 鎸夋瘮渚嬭?绠椾环鏍
-   * @param   string  inputName   杈撳叆妗嗗悕绉
-   * @param   float   rate        姣斾緥
-   * @param   string  priceName   浠锋牸杈撳叆妗嗗悕绉帮紙濡傛灉娌℃湁锛屽彇shop_price锛
+   * éŽ¸å¤‹ç˜®æ¸šå¬­?ç» æ¤¾çŽ¯é
+   * @param   string  inputName   æˆæ’³å†å¦—å——æ‚•ç»‰
+   * @param   float   rate        å§£æ–¾ç·¥
+   * @param   string  priceName   æµ é”‹ç‰¸æˆæ’³å†å¦—å——æ‚•ç»‰å¸®ç´™æ¿¡å‚›ç‰å¨Œâ„ƒæ¹é”›å±½å½‡shop_priceé”›
    */
   function computePrice(inputName, rate, priceName)
   {
@@ -564,7 +564,7 @@
   }
 
   /**
-   * 璁剧疆浜嗕竴涓?晢鍝佷环鏍硷紝鏀瑰彉甯傚満浠锋牸銆佺Н鍒嗕互鍙婁細鍛樹环鏍
+   * ç’å‰§ç–†æµœå—•ç«´æ¶“?æ™¢éä½·çŽ¯éç¡·ç´é€ç‘°å½‰ç”¯å‚šæº€æµ é”‹ç‰¸éŠ†ä½ºÐé’å—•äº’é™å©ç´°é›æ¨¹çŽ¯é
    */
   function priceSetted()
   {
@@ -578,7 +578,7 @@
   }
 
   /**
-   * 璁剧疆浼氬憳浠锋牸娉ㄩ噴
+   * ç’å‰§ç–†æµ¼æ°¬æ†³æµ é”‹ç‰¸å¨‰ã„©å™´
    */
   function set_price_note(rank_id)
   {
@@ -608,7 +608,7 @@
   }
 
   /**
-   * 鏍规嵁甯傚満浠锋牸锛岃?绠楀苟鏀瑰彉鍟嗗簵浠锋牸銆佺Н鍒嗕互鍙婁細鍛樹环鏍
+   * éè§„åµç”¯å‚šæº€æµ é”‹ç‰¸é”›å²ƒ?ç» æ¥€è‹Ÿé€ç‘°å½‰éŸå——ç°µæµ é”‹ç‰¸éŠ†ä½ºÐé’å—•äº’é™å©ç´°é›æ¨¹çŽ¯é
    */
   function marketPriceSetted()
   {
@@ -622,7 +622,7 @@
   }
 
   /**
-   * 鏂板?涓€涓??鏍
+   * é‚æ¿?æ¶“â‚¬æ¶“??é
    */
   function addSpec(obj)
   {
@@ -640,7 +640,7 @@
   }
 
   /**
-   * 鍒犻櫎瑙勬牸鍊
+   * é’çŠ»æ«Žç‘™å‹¬ç‰¸éŠ
    */
   function removeSpec(obj)
   {
@@ -651,7 +651,7 @@
   }
 
   /**
-   * 澶勭悊瑙勬牸
+   * æ¾¶å‹­æ‚Šç‘™å‹¬ç‰¸
    */
   function handleSpec()
   {
@@ -669,7 +669,7 @@
               }
 
               var hiddenSpec = document.getElementById('hidden_' + element.id);
-              hiddenSpec.value = value.join(String.fromCharCode(13)); // 鐢ㄥ洖杞﹂敭闅斿紑姣忎釜瑙勬牸
+              hiddenSpec.value = value.join(String.fromCharCode(13)); // é¢ã„¥æ´–æžï¹‚æ•­é—…æ–¿ç´‘å§£å¿Žé‡œç‘™å‹¬ç‰¸
           }
       }
       return true;
@@ -689,7 +689,7 @@
   }
 
   /**
-   * 蹇?€熸坊鍔犲搧鐗
+   * è¹‡?â‚¬ç†¸åŠé”çŠ²æ§é—
    */
   function rapidBrandAdd(conObj)
   {
@@ -823,7 +823,7 @@
       opt.selected = true;
       opt.innerHTML = response.cat;
 
-      //鑾峰彇瀛愬垎绫荤殑绌烘牸鏁
+      //é‘¾å³°å½‡ç€›æ„¬åžŽç»«è¤æ®‘ç»Œçƒ˜ç‰¸é
       var str = selCat.options[selCat.selectedIndex].text;
       var temp = str.replace(/^\s+/g, '');
       var lengOfSpace = str.length - temp.length;
@@ -878,7 +878,7 @@
 
 
   /**
-   * 鍒犻櫎蹇?€熷垎绫
+   * é’çŠ»æ«Žè¹‡?â‚¬ç†·åžŽç»«
    */
   function removeCat()
   {
@@ -895,7 +895,7 @@
   }
 
   /**
-   * 鍒犻櫎蹇?€熷搧鐗
+   * é’çŠ»æ«Žè¹‡?â‚¬ç†·æ§é—
    */
   function removeBrand()
   {
@@ -909,7 +909,7 @@
   }
 
   /**
-   * 娣诲姞鎵╁睍鍒嗙被
+   * å¨£è¯²å§žéŽµâ•çé’å—™è¢«
    */
   function addOtherCat(conObj)
   {
@@ -935,7 +935,7 @@
       sel.onChange = function() {checkIsLeaf(this);};
   }
 
-  /* 鍏宠仈鍟嗗搧鍑芥暟 */
+  /* éå® ä»ˆéŸå——æ§é‘èŠ¥æšŸ */
   function searchGoods(szObject, catId, brandId, keyword)
   {
       var filters = new Object;
@@ -949,7 +949,7 @@
   }
 
   /**
-   * 鍏宠仈鏂囩珷鍑芥暟
+   * éå® ä»ˆé‚å›©ç·é‘èŠ¥æšŸ
    */
   function searchArticle()
   {
@@ -961,7 +961,7 @@
   }
 
   /**
-   * 鏂板?涓€涓?浘鐗
+   * é‚æ¿?æ¶“â‚¬æ¶“?æµ˜é—
    */
   function addImg(obj)
   {
@@ -974,7 +974,7 @@
   }
 
   /**
-   * 鍒犻櫎鍥剧墖涓婁紶
+   * é’çŠ»æ«Žé¥å‰§å¢–æ¶“å©ç´¶
    */
   function removeImg(obj)
   {
@@ -985,7 +985,7 @@
   }
 
   /**
-   * 鍒犻櫎鍥剧墖
+   * é’çŠ»æ«Žé¥å‰§å¢–
    */
   function dropImg(imgId)
   {
@@ -1001,7 +1001,7 @@
   }
 
   /**
-   * 灏嗗競鍦轰环鏍煎彇鏁
+   * çå——ç«¶é¦è½°çŽ¯éç…Žå½‡é
    */
   function integral_market_price()
   {
@@ -1009,7 +1009,7 @@
   }
 
    /**
-   * 灏嗙Н鍒嗚喘涔伴?搴﹀彇鏁
+   * çå—™Ðé’å—šå–˜æ¶”ä¼´?æ´ï¹€å½‡é
    */
   function parseint_integral()
   {
@@ -1018,7 +1018,7 @@
 
 
   /**
-  * 妫€鏌ヨ揣鍙锋槸鍚﹀瓨鍦
+  * å¦«â‚¬éŒãƒ¨æ£é™é”‹æ§¸éšï¹€ç“¨é¦
   */
   function checkGoodsSn(goods_sn, goods_id)
   {
@@ -1044,7 +1044,7 @@
   }
 
   /**
-   * 鏂板?涓€涓?紭鎯犱环鏍
+   * é‚æ¿?æ¶“â‚¬æ¶“?ç´­éŽ¯çŠ±çŽ¯é
    */
   function addVolumePrice(obj)
   {
@@ -1070,7 +1070,7 @@
   }
 
   /**
-   * 鍒犻櫎浼樻儬浠锋牸
+   * é’çŠ»æ«Žæµ¼æ¨»å„¬æµ é”‹ç‰¸
    */
   function removeVolumePrice(obj)
   {
@@ -1081,7 +1081,7 @@
   }
 
   /**
-   * 鏍￠獙浼樻儬鏁版嵁鏄?惁姝ｇ‘
+   * éï¿ ç™æµ¼æ¨»å„¬éç‰ˆåµé„?æƒå§ï½‡â€˜
    */
   function checkVolumeData(isSubmit,validator)
   {
