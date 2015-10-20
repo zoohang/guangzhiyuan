@@ -16,6 +16,9 @@
 define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
+include_once(ROOT_PATH . 'includes/fckeditor/fckeditor.php'); // 包含 html editor 类文件
+require_once(ROOT_PATH . 'includes/cls_image.php');
+
 $exc = new exchange($ecs->table("category"), $db, 'cat_id', 'cat_name');
 
 /* act操作项的初始化 */
@@ -78,7 +81,7 @@ if ($_REQUEST['act'] == 'add')
     $smarty->assign('cat_select',   cat_list(0, 0, true));
     $smarty->assign('form_act',     'insert');
     $smarty->assign('cat_info',     array('is_show' => 1));
-
+    create_html_editor('FCKeditor9');
 
 
     /* 显示页面 */
@@ -93,13 +96,15 @@ if ($_REQUEST['act'] == 'insert')
 {
     /* 权限检查 */
     admin_priv('cat_manage');
-
+    var_dump($_POST);
     /* 初始化变量 */
     $cat['cat_id']       = !empty($_POST['cat_id'])       ? intval($_POST['cat_id'])     : 0;
     $cat['parent_id']    = !empty($_POST['parent_id'])    ? intval($_POST['parent_id'])  : 0;
     $cat['sort_order']   = !empty($_POST['sort_order'])   ? intval($_POST['sort_order']) : 0;
     $cat['keywords']     = !empty($_POST['keywords'])     ? trim($_POST['keywords'])     : '';
     $cat['cat_desc']     = !empty($_POST['cat_desc'])     ? $_POST['cat_desc']           : '';
+    $cat['cat_description']     = !empty($_POST['FCKeditor9'])     ? $_POST['FCKeditor9']           : '';
+
     $cat['measure_unit'] = !empty($_POST['measure_unit']) ? trim($_POST['measure_unit']) : '';
     $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
@@ -213,6 +218,7 @@ if ($_REQUEST['act'] == 'edit')
     $smarty->assign('form_act',    'update');
     $smarty->assign('cat_select',  cat_list(0, $cat_info['parent_id'], true));
     $smarty->assign('goods_type_list',  goods_type_list(0)); // 取得商品类型
+    create_html_editor('FCKeditor9', $cat_info['cat_description']);
 
     /* 显示页面 */
     assign_query_info();
@@ -259,6 +265,8 @@ if ($_REQUEST['act'] == 'update')
     $cat['sort_order']   = !empty($_POST['sort_order'])   ? intval($_POST['sort_order']) : 0;
     $cat['keywords']     = !empty($_POST['keywords'])     ? trim($_POST['keywords'])     : '';
     $cat['cat_desc']     = !empty($_POST['cat_desc'])     ? $_POST['cat_desc']           : '';
+    $cat['cat_description']     = !empty($_POST['FCKeditor9'])     ? $_POST['FCKeditor9']           : '';
+
     $cat['measure_unit'] = !empty($_POST['measure_unit']) ? trim($_POST['measure_unit']) : '';
     $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
     $cat['is_show']      = !empty($_POST['is_show'])      ? intval($_POST['is_show'])    : 0;

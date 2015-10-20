@@ -395,7 +395,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         }
     }
     $smarty->assign('goods_list',       $goodslist);//var_dump($goodslist);
-    $smarty->assign('category',         $cat_id);var_dump($cat);
+    $smarty->assign('category',         $cat_id);
+    $smarty->assign('cat',         $cat);
     $smarty->assign('script_name', 'category');
 
     assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
@@ -422,7 +423,7 @@ if($cat_id == 16){
  */
 function get_cat_info($cat_id)
 {
-    return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
+    return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc,cat_description, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
         " WHERE cat_id = '$cat_id'");
 }
 

@@ -214,6 +214,14 @@
             <td><input type="text" name="goods_weight" value="{$goods.goods_weight_by_unit}" size="20" /> <select name="weight_unit">{html_options options=$unit_list selected=$weight_unit}</select></td>
           </tr>
           {/if}
+          <tr>
+            <td class="label">等级</td>
+            <td><input type="text" name="level" value="{$goods.level}" size="20" /></td>
+          </tr>
+          <tr>
+            <td class="label">称号</td>
+            <td><input type="text" name="designation" value="{$goods.designation}" size="20" /></td>
+          </tr>
           {if $cfg.use_storage}
           <tr>
             <td class="label"><a href="javascript:showNotice('noticeStorage');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_goods_number}</td>

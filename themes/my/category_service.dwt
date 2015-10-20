@@ -41,10 +41,10 @@
         <div class="w760 goods_list">
           <div class="cate_desc">
             <p class="cate_desc_title">
-              {$keywords}
+              {$cat.keywords}
             </p>
             <div class="w760 cate_desc_content">
-              {$description}
+              {$cat.cat_description}
             </div>
           </div>
           <div class="service_goods">
