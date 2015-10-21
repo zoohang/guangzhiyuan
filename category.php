@@ -333,7 +333,17 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     $smarty->assign('ur_here',          $position['ur_here']);  // 当前位置
 
     $smarty->assign('categories',       get_categories_tree($cat_id)); // 分类树
-    $smarty->assign('categories_xiala',       get_categories_tree(21)); // 分类树下拉
+    $smarty->assign('categories_xiala',       get_categories_tree($cat_id)); // 分类树下拉
+    $smarty->assign('categories_service',       get_categories_tree(18)); // 项目服务子分类
+
+    //var_dump(get_categories_tree($cat_id));
+
+    $smarty->assign('child_categories',            get_child_tree($cat_id));
+    $smarty->assign('parent_id',            $cat['parent_id']);
+    //得到服务项目下子分类id的数组
+    $service_array = get_service_second_catefory();
+    $service_third_array = get_service_third_catefory();
+
     $smarty->assign('helps',            get_shop_help());              // 网店帮助
     $smarty->assign('top_goods',        get_top10());                  // 销售排行
     $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
@@ -386,6 +396,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     {
         $page = $max_page;
     }
+
+
     $goodslist = category_get_goods($children, $type, $brand, $price_min, $price_max, $ext, $size, $page, $sort, $order);
     if($display == 'grid')
     {
@@ -396,17 +408,25 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     }
     $smarty->assign('goods_list',       $goodslist);//var_dump($goodslist);
     $smarty->assign('category',         $cat_id);
-    $smarty->assign('cat',         $cat);
+    $smarty->assign('cat',         $cat);//var_dump($cat);
     $smarty->assign('script_name', 'category');
-
     assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
     assign_dynamic('category'); // 动态内容
 }
-if($cat_id == 16){
+if($cat_id == 16)
+{
     $smarty->display('category_kecheng.dwt', $cache_id);
-}elseif($cat['parent_id'] == 21 || $cat_id == 21){
+}
+elseif ($cat_id == 18 || $cat['parent_id'] == 18)
+{
+    $smarty->display('category_obj_service.dwt', $cache_id);
+}
+elseif(in_array($cat['parent_id'], $service_array) || in_array($cat['parent_id'], $service_third_array))
+{
     $smarty->display('category_service.dwt', $cache_id);
-}else{
+}
+else
+{
     $smarty->display('category.dwt', $cache_id);
 }
 
@@ -474,7 +494,7 @@ function category_get_goods($children, $type, $brand, $min, $max, $ext, $size, $
     /* 获得商品列表 */
     $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.click_count,g.add_time, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
-                'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
+                'g.promote_start_date, g.promote_end_date, g.goods_brief,g.level,g.designation, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
             'LEFT JOIN ' . $GLOBALS['ecs']->table('member_price') . ' AS mp ' .
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
@@ -529,6 +549,8 @@ function category_get_goods($children, $type, $brand, $min, $max, $ext, $size, $
         }
         $arr[$row['goods_id']]['name']             = $row['goods_name'];
         $arr[$row['goods_id']]['goods_brief']      = $row['goods_brief'];
+        $arr[$row['goods_id']]['level']            = $row['level'];
+        $arr[$row['goods_id']]['designation']      = $row['designation'];
         $arr[$row['goods_id']]['click_count']      = $row['click_count'];
         $arr[$row['goods_id']]['add_time']         = date('Y-m',$row['add_time']);
         $arr[$row['goods_id']]['add_time_day']     = date('d',$row['add_time']);
@@ -626,5 +648,31 @@ function get_parent_grade($cat_id)
 
 }
 
+function get_service_second_catefory($cat_id = 18)
+{
+    $sql = "SELECT cat_id  FROM " . $GLOBALS['ecs']->table('category').' WHERE parent_id = '.$cat_id;
+    $res = $GLOBALS['db']->getAll($sql);
+    $arr = array();  
+    
+    foreach($res as $item)
+    {
+        $arr[] = $item['cat_id'];
+    }
+    return $arr;
+}
 
+function get_service_third_catefory()
+{
+    $in = get_service_second_catefory();
+    $in = '('.implode(',', $in).')';
+    $sql = "SELECT cat_id  FROM " . $GLOBALS['ecs']->table('category').' WHERE parent_id in '.$in;
+    $res = $GLOBALS['db']->getAll($sql);
+    $arr = array();  
+    
+    foreach($res as $item)
+    {
+        $arr[] = $item['cat_id'];
+    }
+    return $arr;
+}
 ?>

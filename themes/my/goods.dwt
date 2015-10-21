@@ -151,7 +151,7 @@ function reg(str){
         </span>
       </p>
       <p class="goods_button">
-        <a href="javascript:addToCart({$goods.goods_id})"><img src="images/goods_17.png" alt=""></a>
+        <a href="javascript:addToCart2({$goods.goods_id})"><img src="images/goods_17.png" alt=""></a>
         <a href="javascript:addToCart({$goods.goods_id})"><img src="images/goods_19.png" alt=""></a>
       </p>
     <ul>

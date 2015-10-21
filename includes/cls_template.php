@@ -636,7 +636,9 @@ class cls_template
                     case 'strip_tags':
                         $p = 'strip_tags(' . $p . ')';
                         break;
-
+                    case 'dump':
+                        $p = 'var_dump(' . $p . ')';
+                        break;
                     default:
                         # code...
                         break;

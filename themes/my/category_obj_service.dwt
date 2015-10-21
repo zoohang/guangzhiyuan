@@ -1,0 +1,87 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<!-- {if $cat_style} -->
+<link href="{$cat_style}" rel="stylesheet" type="text/css" />
+<!-- {/if} -->
+{* 包含脚本文件 *}
+{insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
+{insert_scripts files='common.js,global.js,compare.js'}
+
+  <div class="w100">
+    <div class="w1000">
+      <div class="w1000 url_here">
+      <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <div class="w1000 text">
+
+        <div class="w210 goods_cat">
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">服务项目</p>
+            <ul class="cat_child">
+              <!--{foreach from=$categories_service item=cat}-->
+              <!--{if $cat.id eq 18}-->
+              <!--{foreach from=$cat.cat_id item=child}-->
+              <li><img src="images/goods_28.png" alt="" /><a href="{$child.url}">{$child.name|escape:html}</a></li>
+              <!--{/foreach}-->
+              <!--{/if}-->
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          <!--{if $helps}-->
+          <div class="cat_block">
+            <p class="cat_title"><img src="images/icon.png" alt="">帮助中心</p>
+            <ul class="cat_child">
+              <!-- {foreach from=$helps item=help_cat} -->
+              <li><img src="images/goods_28.png" alt="" /><a href='{$help_cat.cat_id}' title="{$help_cat.cat_name}">{$help_cat.cat_name}</a></li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          <!--{/if}-->
+
+        </div>
+
+        <div class="w760 goods_list">
+          <!--{if $parent_id eq 0}-->
+            <!--{foreach from=$child_categories item=cat}-->
+            <!--{if $cat.cat_id}-->
+            <!--{foreach from=$cat.cat_id item=child}-->
+            <div class="goods_service_one">
+              <a href="{$child.url}"><img class="goods_service_img" src="{$child.cat_img}" width="480px" height="242px" alt=""></a>
+              <div class="goods_service_info">
+                <div class="goods_service_title"><a href="{$child.url}">{$child.name|escape:html}</a></div>
+                <p class="goods_service_detail">{$child.cat_desc|truncate:80}</p>
+              </div>
+            </div>
+            <!--{/foreach}-->
+            <!--{/if}-->
+            <!--{/foreach}-->
+          <!--{else}-->
+            <!--{foreach from=$child_categories item=child}-->
+            <div class="goods_service_one">
+              <a href="{$child.url}"><img class="goods_service_img" src="{$child.cat_img}" width="480px" height="242px" alt=""></a>
+              <div class="goods_service_info">
+                <div class="goods_service_title"><a href="{$child.url}">{$child.name|escape:html}</a></div>
+                <p class="goods_service_detail">{$child.cat_desc|truncate:80}</p>
+              </div>
+            </div>
+            <!--{/foreach}-->
+          <!--{/if}-->
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+
+    $('.goods_one').hover(function () {
+      $(this).children('.add_cart_div').show();
+      $(this).children('.cat_goods_desc').css('border-bottom','5px solid #f87d01');
+    },function () {
+      $(this).children('.add_cart_div').hide();
+      $(this).children('.cat_goods_desc').css('border-bottom','5px solid #000');
+    });
+  
+  </script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

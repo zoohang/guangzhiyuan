@@ -18,7 +18,7 @@ define('IN_ECS', true);
 require(dirname(__FILE__) . '/includes/init.php');
 include_once(ROOT_PATH . 'includes/fckeditor/fckeditor.php'); // 包含 html editor 类文件
 require_once(ROOT_PATH . 'includes/cls_image.php');
-
+$image = new cls_image($_CFG['bgcolor']);
 $exc = new exchange($ecs->table("category"), $db, 'cat_id', 'cat_name');
 
 /* act操作项的初始化 */
@@ -96,7 +96,6 @@ if ($_REQUEST['act'] == 'insert')
 {
     /* 权限检查 */
     admin_priv('cat_manage');
-    var_dump($_POST);
     /* 初始化变量 */
     $cat['cat_id']       = !empty($_POST['cat_id'])       ? intval($_POST['cat_id'])     : 0;
     $cat['parent_id']    = !empty($_POST['parent_id'])    ? intval($_POST['parent_id'])  : 0;
@@ -104,7 +103,7 @@ if ($_REQUEST['act'] == 'insert')
     $cat['keywords']     = !empty($_POST['keywords'])     ? trim($_POST['keywords'])     : '';
     $cat['cat_desc']     = !empty($_POST['cat_desc'])     ? $_POST['cat_desc']           : '';
     $cat['cat_description']     = !empty($_POST['FCKeditor9'])     ? $_POST['FCKeditor9']           : '';
-
+    $cat['cat_img'] = $image->upload_image($_FILES['cat_img']);
     $cat['measure_unit'] = !empty($_POST['measure_unit']) ? trim($_POST['measure_unit']) : '';
     $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
@@ -257,6 +256,12 @@ if ($_REQUEST['act'] == 'update')
 {
     /* 权限检查 */
     admin_priv('cat_manage');
+    $image = new cls_image();
+    $image = $image->upload_image($_FILES['cat_img']);
+    if(!empty($image))  
+    {
+        $cat['cat_img'] = $image;  
+    }
 
     /* 初始化变量 */
     $cat_id              = !empty($_POST['cat_id'])       ? intval($_POST['cat_id'])     : 0;

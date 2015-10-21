@@ -6,6 +6,12 @@
 {* 包含脚本文件 *}
 {insert_scripts files='jquery-1.11.1.min.js,jquery.json.js'}
 {insert_scripts files='common.js,global.js,compare.js'}
+  <div id="DialogBGDiv" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 666;display:none;">
+      <div style="position:relative;width:100%;height:100%;">
+        <div id="_DialogBGMask" style="position: absolute; opacity: 0.4; width: 100%; height: 100%; background-color: rgb(51, 51, 51);">   
+        </div>
+      </div>
+  </div>
 
   <div class="w100">
     <div class="w1000">
@@ -16,32 +22,35 @@
 
         <div class="w210 goods_cat">
           <div class="cat_block">
-            <p class="cat_title"><img src="images/icon.png" alt="">产品分类</p>
+            <p class="cat_title"><img src="images/icon.png" alt="">服务项目</p>
             <ul class="cat_child">
-              <li><img src="images/goods_28.png" alt="" /><a href="">健康养生</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">心理咨询</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">能量疗育</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">其他项目</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">个案分享</a></li>
+              <!--{foreach from=$categories_service item=cat}-->
+              <!--{if $cat.id eq 18}-->
+              <!--{foreach from=$cat.cat_id item=child}-->
+              <li><img src="images/goods_28.png" alt="" /><a href="{$child.url}">{$child.name|escape:html}</a></li>
+              <!--{/foreach}-->
+              <!--{/if}-->
+              <!--{/foreach}-->
             </ul>
           </div>
 
+          <!--{if $helps}-->
           <div class="cat_block">
             <p class="cat_title"><img src="images/icon.png" alt="">帮助中心</p>
             <ul class="cat_child">
-              <li><img src="images/goods_28.png" alt="" /><a href="">会员权益</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">积分兑换</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">常见问题</a></li>
-              <li><img src="images/goods_28.png" alt="" /><a href="">支付方式</a></li>
+              <!-- {foreach from=$helps item=help_cat} -->
+              <li><img src="images/goods_28.png" alt="" /><a href='{$help_cat.cat_id}' title="{$help_cat.cat_name}">{$help_cat.cat_name}</a></li>
+              <!--{/foreach}-->
             </ul>
           </div>
+          <!--{/if}-->
           
         </div>
 
         <div class="w760 goods_list">
           <div class="cate_desc">
             <p class="cate_desc_title">
-              {$cat.keywords}
+              {$cat.cat_name}
             </p>
             <div class="w760 cate_desc_content">
               {$cat.cat_description}
@@ -54,12 +63,15 @@
               </div>
               <div class="service_goods_area">
                 <select name="" id="choose_erea">
-                  <option value="category.php?id=21">地区 | --请选择--</option>
-                  <!--{foreach from=$categories_xiala item=cat}-->
-                  <!--{if $cat.id eq 21}-->
-                  <!--{foreach from=$cat.cat_id item=child}-->
-                  <option value="{$child.url}">{$child.name|escape:html}</option>
+                  <option value="{$category}">地区 | --请选择--</option>
+                  <!--{foreach from=$categories_xiala item=child}-->
+                  <!--{if $child.id eq $category}-->
+                  <!--{foreach from=$child.cat_id item=chi}-->
+                  <option value="{$chi.id}" {if $category eq $chi.id} selected="selected" {/if}>{$chi.name|escape:html}</option>
                   <!--{/foreach}-->
+                  <!--{/if}-->
+                  <!--{if !$child.cat_id}-->
+                  <option value="{$child.id}" {if $category eq $child.id} selected="selected" {/if}>{$child.name|escape:html}</option>
                   <!--{/if}-->
                   <!--{/foreach}-->
                 </select>
@@ -71,24 +83,47 @@
               <!--{if $goods}-->
               <div class="service_goods_list_one">
                 <p class="service_title">
-                  <span class="service_title_name">李雪主</span>
-                  <span class="service_title_info">灵气能量疗法导师</span>
-                  <span class="service_title_info">3星级</span>
+                  <span class="service_title_name">{$goods.name}</span>
+                  <span class="service_title_info">{$goods.designation}</span>
+                  <span class="service_title_info">{$goods.level}</span>
                 </p>
                 <div class="service_goods_content">
-                  <img src="images/service_people.png" alt="">
+                  <img src="{$goods.goods_thumb}" width="160px" height="158px" alt="">
                   <div class="service_goods_miaoshu">
-                    <p class="service_goods_miaoshu_desc">信行业的角度来说，铁塔公司虽然并不能解决所有电信行业深化改革的难题，但至少从铁塔公司成立的那一天起，它一直是</p>
-                    <p class="service_price">价格：<span class="jifen_price">5000</span>元</p>
-                    <a href="javascript:void(0);"><div class="service_order_btn">预约</div></a>
+                    <p class="service_goods_miaoshu_desc">{$goods.goods_brief|truncate:50}</p>
+                    <p class="service_price">价格：<span class="jifen_price">{$goods.shop_price}</span></p>
+                    <a href="javascript:void(0);"><div class="service_order_btn" goodsid="{$goods.goods_id}" isLogin="{$smarty.session.user_name}">预约</div></a>
                   </div>
                 </div>
               </div>
+              <!--div购买弹框start-->
+              <div class="exchange_div" style="top:auto;">
+                <img src="images/exchange_close.png" onclick="closeDiv()" alt="">
+                <div class="exchange_form">
+                  <p class="goods_price_desc">预约：{$goods.name} 
+                    <span class="service_title_info">{$goods.designation}</span>
+                    <span class="service_title_info">{$goods.level}</span>
+                  </p>
+                  <p class="goods_price_desc">价格：{$goods.shop_price}</p>
+                  <form action="message.php" method="post" name="formMsg" onSubmit="return submitMsgBoard(this)">
+                    <input type="text" name="user_name" value="{$smarty.session.user_name}" placeholder="姓名">
+                    <input type="text" name="tel"  placeholder="电话">
+                    <input type="text" name="num" style="margin-right:0;" placeholder="预约时间 例如 2015/05/05">
+                    <input type="text" name="user_email" value="{$smarty.session.email|escape}" placeholder="邮箱">
+                    <input type="text" style="width:466px;margin-right:0" name="address" placeholder="地址">
+                    <textarea name="msg_content" id="">备注</textarea>
+                    <input name="msg_title" type="hidden" value="兑换 {$goods.goods_name}" />
+                    <input type="hidden" name="msg_type" value="4">
+                    <input type="hidden" name="act" value="act_add_message">
+                    <input type="submit" class="exchange_btn" onclick="location.href='flow.php?step=consignee&direct_shopping=1'">
+                  </form>
+                </div>
+              </div>
+              <!--div购买弹框end-->
               <!--{/if}-->
               <!--{/foreach}-->
             </div>
           </div>
-          
           
           
           <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
@@ -97,8 +132,37 @@
     </div>
   </div>
   <script type="text/javascript">
+    $('.service_order_btn').click(function () {
+      var isLogin = $(this).attr('isLogin');
+      var id = $(this).attr('goodsid');
+      if(isLogin == '' || isLogin < 1){
+        var r=confirm("您没有登录,是否先登录在进行购买?");
+        if(r == true){
+          window.location.href = 'user.php?act=login';
+          return false;
+        }else{
+          $(this).parents('.service_goods_list_one').next('.exchange_div').show();
+          var htmlH = window.document.body.offsetHeight;
+          $('#DialogBGDiv').css('height',htmlH).show();
+          return false;
+        }
+      }
+      addToCart2(id);
+      $(this).parents('.service_goods_list_one').next('.exchange_div').show();
+      var htmlH = window.document.body.offsetHeight;
+      $('#DialogBGDiv').css('height',htmlH).show();
+      return false;
+
+      
+    });
+    function closeDiv() {
+      $('.exchange_div').hide();
+      $('#DialogBGDiv').hide();
+    }
+
   $('#choose_erea').change(function () {
-    window.location.href = $(this).val();
+    var id = $(this).val();
+    window.location.href = 'category.php?id='+id;
   });
 
     $('.goods_one').hover(function () {

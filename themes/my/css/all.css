@@ -1027,7 +1027,7 @@ label[for=checkboxid2] a{
 	border: 0;
 	margin-top: 30px;
 }
-#exchange_div{
+.exchange_div{
 	width: 750px;
 	height: 450px;
 	z-index: 888;
@@ -1038,11 +1038,11 @@ label[for=checkboxid2] a{
 	left: 22%;
 	display: none;
 }
-#exchange_div img{
+.exchange_div img{
 	float: right;
 	cursor: pointer;
 }
-#exchange_div input{
+.exchange_div input{
 	  height: 25px;
     width: 217px;
     line-height: 30px;
@@ -1062,7 +1062,7 @@ label[for=checkboxid2] a{
 .exchange_form .goods_price_desc{
 	font-size: 20px;
 }
-#exchange_div .exchange_btn{
+.exchange_div .exchange_btn{
 	height: 50px;
 	font-size: 22px;
 }

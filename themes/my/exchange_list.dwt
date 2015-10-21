@@ -62,7 +62,7 @@
             </div>
           </div>
           <!--div购买弹框start-->
-          <div id="exchange_div">
+          <div class="exchange_div">
             <img src="images/exchange_close.png" onclick="closeDiv()" alt="">
             <div class="exchange_form">
               <p class="goods_price_desc">积分兑换：{$goods.name}</p>
@@ -97,12 +97,13 @@
         window.location.href = 'user.php?act=login';
         return false;
       }
-      $('#exchange_div').show();
+      $(this).parents('.goods_jifen_one').next('.exchange_div').show();
+      //$('.exchange_div').show();
       var htmlH = window.document.body.offsetHeight;
       $('#DialogBGDiv').css('height',htmlH).show();
     });
     function closeDiv() {
-      $('#exchange_div').hide();
+      $('.exchange_div').hide();
       $('#DialogBGDiv').hide();
     }
 
